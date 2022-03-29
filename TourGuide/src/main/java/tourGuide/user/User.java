@@ -78,7 +78,11 @@ public class User {
 	public List<UserReward> getUserRewards() {
 		return userRewards;
 	}
-	
+
+	public void setUserRewards(List<UserReward> userRewards) {
+		this.userRewards = userRewards;
+	}
+
 	public UserPreferences getUserPreferences() {
 		return userPreferences;
 	}

@@ -47,7 +47,7 @@ public class RewardsService {
 		
 <span class="fc bfc" id="L48" title="All 2 branches covered.">		for(VisitedLocation visitedLocation : userLocations) {</span>
 <span class="fc bfc" id="L49" title="All 2 branches covered.">			for(Attraction attraction : attractions) {</span>
-<span class="pc bpc" id="L50" title="1 of 2 branches missed.">				if(user.getUserRewards().stream().noneMatch(r -&gt; r.attraction.attractionName.equals(attraction.attractionName))) {</span>
+<span class="fc bfc" id="L50" title="All 2 branches covered.">				if(user.getUserRewards().stream().noneMatch(r -&gt; r.attraction.attractionName.equals(attraction.attractionName))) {</span>
 <span class="fc bfc" id="L51" title="All 2 branches covered.">					if(nearAttraction(visitedLocation, attraction)) {</span>
 <span class="fc" id="L52">						user.addUserReward(new UserReward(visitedLocation, attraction, getRewardPoints(attraction, user)));</span>
 					}
