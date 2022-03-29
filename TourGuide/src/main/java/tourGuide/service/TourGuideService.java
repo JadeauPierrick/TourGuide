@@ -9,6 +9,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 import java.util.UUID;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -86,8 +90,31 @@ public class TourGuideService {
 	public VisitedLocation trackUserLocation(User user) {
 		VisitedLocation visitedLocation = gpsUtil.getUserLocation(user.getUserId());
 		user.addToVisitedLocations(visitedLocation);
-		rewardsService.calculateRewards(user);
 		return visitedLocation;
+	}
+
+	public void trackSeveralUsersLocation(List<User> userList) {
+		logger.info("Multithreading trackSeveralUserLocation begins");
+		ExecutorService executor = Executors.newFixedThreadPool(100);
+		List<Future<?>> results = new ArrayList<>();
+
+		for (User user : userList) {
+			Future<?> future = executor.submit(()->{
+				trackUserLocation(user);
+			});
+			results.add(future);
+		}
+
+		results.forEach(r-> {
+			try {
+				r.get();
+			} catch (InterruptedException | ExecutionException e) {
+				e.printStackTrace();
+			}
+		});
+
+		executor.shutdown();
+		rewardsService.calculateSeveralRewards(userList);
 	}
 
 	public List<Attraction> getNearByAttractions(VisitedLocation visitedLocation) {

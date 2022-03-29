@@ -1,8 +1,11 @@
 package tourGuide.service;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.concurrent.*;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import gpsUtil.GpsUtil;
@@ -15,7 +18,8 @@ import tourGuide.user.UserReward;
 
 @Service
 public class RewardsService {
-    private static final double STATUTE_MILES_PER_NAUTICAL_MILE = 1.15077945;
+	private Logger logger = LoggerFactory.getLogger(RewardsService.class);
+	private static final double STATUTE_MILES_PER_NAUTICAL_MILE = 1.15077945;
 
 	// proximity in miles
     private int defaultProximityBuffer = 10;
@@ -43,7 +47,7 @@ public class RewardsService {
 		
 		for(VisitedLocation visitedLocation : userLocations) {
 			for(Attraction attraction : attractions) {
-				if(user.getUserRewards().stream().filter(r -> r.attraction.attractionName.equals(attraction.attractionName)).count() == 0) {
+				if(user.getUserRewards().stream().noneMatch(r -> r.attraction.attractionName.equals(attraction.attractionName))) {
 					if(nearAttraction(visitedLocation, attraction)) {
 						user.addUserReward(new UserReward(visitedLocation, attraction, getRewardPoints(attraction, user)));
 					}
@@ -51,7 +55,30 @@ public class RewardsService {
 			}
 		}
 	}
-	
+
+	public void calculateSeveralRewards(List<User> userList) {
+		logger.info("Multithreading calculateSeveralRewards begins");
+		ExecutorService executor = Executors.newFixedThreadPool(100);
+		List<Future<?>> results = new ArrayList<>();
+
+		for (User user : userList) {
+			Future<?> future = executor.submit(()->{
+				calculateRewards(user);
+			});
+			results.add(future);
+		}
+
+		results.forEach(r-> {
+			try {
+				r.get();
+			} catch (InterruptedException | ExecutionException e) {
+				e.printStackTrace();
+			}
+		});
+
+		executor.shutdown();
+	}
+
 	public boolean isWithinAttractionProximity(Attraction attraction, Location location) {
 		return getDistance(attraction, location) > attractionProximityRange ? false : true;
 	}
