@@ -1,7 +1,10 @@
 package tourGuide.controller;
 
 import java.util.List;
+import java.util.Map;
+import java.util.UUID;
 
+import gpsUtil.location.Location;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -63,8 +66,8 @@ public class TourGuideController {
     	//        "019b04a9-067a-4c76-8817-ee75088c3822": {"longitude":-48.188821,"latitude":74.84371} 
     	//        ...
     	//     }
-    	
-    	return JsonStream.serialize("");
+        Map<UUID, Location> allCurrentLocations = tourGuideService.getAllCurrentLocations();
+    	return JsonStream.serialize(allCurrentLocations);
     }
     
     @RequestMapping("/getTripDeals")

@@ -141,7 +141,17 @@ public class TourGuideService {
 
 		return nearByAttractionDTO;
 	}
-	
+
+	public Map<UUID, Location> getAllCurrentLocations() {
+		Map<UUID, Location> allCurrentLocations = new HashMap<>();
+		List<User> allUsers = getAllUsers();
+
+		allUsers.forEach(user -> allCurrentLocations.put(user.getUserId(), getUserLocation(user)));
+
+		return allCurrentLocations;
+	}
+
+
 	private void addShutDownHook() {
 		Runtime.getRuntime().addShutdownHook(new Thread() { 
 		      public void run() {
