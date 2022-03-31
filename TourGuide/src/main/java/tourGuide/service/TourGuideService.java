@@ -20,9 +20,11 @@ import gpsUtil.location.Location;
 import gpsUtil.location.VisitedLocation;
 import tourGuide.dto.AttractionDTO;
 import tourGuide.dto.NearByAttractionDTO;
+import tourGuide.dto.UserPreferencesDTO;
 import tourGuide.helper.InternalTestHelper;
 import tourGuide.tracker.Tracker;
 import tourGuide.user.User;
+import tourGuide.user.UserPreferences;
 import tourGuide.user.UserReward;
 import tripPricer.Provider;
 import tripPricer.TripPricer;
@@ -151,6 +153,31 @@ public class TourGuideService {
 		return allCurrentLocations;
 	}
 
+	public UserPreferences updateUserPreferences(User user, UserPreferencesDTO newUserPreferences) {
+		UserPreferences currentPreferences = user.getUserPreferences();
+		if (newUserPreferences.getAttractionProximity() >= 0) {
+			currentPreferences.setAttractionProximity(newUserPreferences.getAttractionProximity());
+		}
+		if (newUserPreferences.getLowerPricePoint() != null) {
+			currentPreferences.setLowerPricePoint(newUserPreferences.getLowerPricePoint());
+		}
+		if (newUserPreferences.getHighPricePoint() != null) {
+			currentPreferences.setHighPricePoint(newUserPreferences.getHighPricePoint());
+		}
+		if (newUserPreferences.getTripDuration() >= 0) {
+			currentPreferences.setTripDuration(newUserPreferences.getTripDuration());
+		}
+		if (newUserPreferences.getTicketQuantity() >= 0) {
+			currentPreferences.setTicketQuantity(newUserPreferences.getTicketQuantity());
+		}
+		if (newUserPreferences.getNumberOfAdults() >= 0) {
+			currentPreferences.setNumberOfAdults(newUserPreferences.getNumberOfAdults());
+		}
+		if (newUserPreferences.getNumberOfChildren() >= 0) {
+			currentPreferences.setNumberOfChildren(newUserPreferences.getNumberOfChildren());
+		}
+		return currentPreferences;
+	}
 
 	private void addShutDownHook() {
 		Runtime.getRuntime().addShutdownHook(new Thread() { 
