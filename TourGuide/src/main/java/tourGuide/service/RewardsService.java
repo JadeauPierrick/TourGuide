@@ -6,13 +6,16 @@ import java.util.concurrent.*;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import gpsUtil.GpsUtil;
-import gpsUtil.location.Attraction;
-import gpsUtil.location.Location;
-import gpsUtil.location.VisitedLocation;
 import rewardCentral.RewardCentral;
+import tourGuide.beans.Attraction;
+import tourGuide.beans.Location;
+import tourGuide.beans.VisitedLocation;
+import tourGuide.proxies.GpsUtilProxy;
+import tourGuide.proxies.RewardCentralProxy;
 import tourGuide.user.User;
 import tourGuide.user.UserReward;
 
@@ -25,13 +28,11 @@ public class RewardsService {
     private int defaultProximityBuffer = 10;
 	private int proximityBuffer = defaultProximityBuffer;
 	private int attractionProximityRange = 200;
-	private final GpsUtil gpsUtil;
-	private final RewardCentral rewardsCentral;
-	
-	public RewardsService(GpsUtil gpsUtil, RewardCentral rewardCentral) {
-		this.gpsUtil = gpsUtil;
-		this.rewardsCentral = rewardCentral;
-	}
+	@Autowired
+	private GpsUtilProxy gpsUtilProxy;
+	@Autowired
+	private RewardCentralProxy rewardCentralProxy;
+
 	
 	public void setProximityBuffer(int proximityBuffer) {
 		this.proximityBuffer = proximityBuffer;
@@ -42,8 +43,8 @@ public class RewardsService {
 	}
 	
 	public void calculateRewards(User user) {
-		List<VisitedLocation> userLocations = new CopyOnWriteArrayList<>(user.getVisitedLocations());
-		List<Attraction> attractions = gpsUtil.getAttractions();
+		List<tourGuide.beans.VisitedLocation> userLocations = new CopyOnWriteArrayList<>(user.getVisitedLocations());
+		List<tourGuide.beans.Attraction> attractions = gpsUtilProxy.getAttractions();
 		
 		for(VisitedLocation visitedLocation : userLocations) {
 			for(Attraction attraction : attractions) {
@@ -79,19 +80,19 @@ public class RewardsService {
 		executor.shutdown();
 	}
 
-	public boolean isWithinAttractionProximity(Attraction attraction, Location location) {
+	public boolean isWithinAttractionProximity(tourGuide.beans.Attraction attraction, Location location) {
 		return getDistance(attraction, location) > attractionProximityRange ? false : true;
 	}
 	
-	private boolean nearAttraction(VisitedLocation visitedLocation, Attraction attraction) {
+	private boolean nearAttraction(tourGuide.beans.VisitedLocation visitedLocation, tourGuide.beans.Attraction attraction) {
 		return getDistance(attraction, visitedLocation.location) > proximityBuffer ? false : true;
 	}
 	
-	public int getRewardPoints(Attraction attraction, User user) {
-		return rewardsCentral.getAttractionRewardPoints(attraction.attractionId, user.getUserId());
+	public int getRewardPoints(tourGuide.beans.Attraction attraction, User user) {
+		return rewardCentralProxy.getAttractionRewardPoints(attraction.attractionId, user.getUserId());
 	}
 	
-	public double getDistance(Location loc1, Location loc2) {
+	public double getDistance(tourGuide.beans.Attraction loc1, tourGuide.beans.Location loc2) {
         double lat1 = Math.toRadians(loc1.latitude);
         double lon1 = Math.toRadians(loc1.longitude);
         double lat2 = Math.toRadians(loc2.latitude);

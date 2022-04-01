@@ -1,9 +1,9 @@
 package tourGuide.dto;
 
-import gpsUtil.location.Location;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import tourGuide.beans.Location;
 
 import java.util.List;
 

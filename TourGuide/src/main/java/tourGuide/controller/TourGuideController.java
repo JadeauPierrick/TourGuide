@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
-import gpsUtil.location.Location;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -12,10 +11,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.jsoniter.output.JsonStream;
 
-import gpsUtil.location.VisitedLocation;
+import tourGuide.beans.Location;
+import tourGuide.beans.Provider;
+import tourGuide.beans.VisitedLocation;
 import tourGuide.service.TourGuideService;
 import tourGuide.user.User;
-import tripPricer.Provider;
 
 @RestController
 public class TourGuideController {
@@ -46,7 +46,7 @@ public class TourGuideController {
     @RequestMapping("/getNearbyAttractions") 
     public String getNearbyAttractions(@RequestParam String userName) {
         User user = tourGuideService.getUser(userName);
-    	VisitedLocation visitedLocation = tourGuideService.getUserLocation(tourGuideService.getUser(userName));
+    	tourGuide.beans.VisitedLocation visitedLocation = tourGuideService.getUserLocation(tourGuideService.getUser(userName));
     	return JsonStream.serialize(tourGuideService.getNearByAttractions(visitedLocation, user));
     }
     
