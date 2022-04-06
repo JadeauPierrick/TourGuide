@@ -9,8 +9,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import gpsUtil.GpsUtil;
-import rewardCentral.RewardCentral;
 import tourGuide.beans.Attraction;
 import tourGuide.beans.Location;
 import tourGuide.beans.VisitedLocation;
@@ -43,8 +41,8 @@ public class RewardsService {
 	}
 	
 	public void calculateRewards(User user) {
-		List<tourGuide.beans.VisitedLocation> userLocations = new CopyOnWriteArrayList<>(user.getVisitedLocations());
-		List<tourGuide.beans.Attraction> attractions = gpsUtilProxy.getAttractions();
+		List<VisitedLocation> userLocations = new CopyOnWriteArrayList<>(user.getVisitedLocations());
+		List<Attraction> attractions = gpsUtilProxy.getAttractions();
 		
 		for(VisitedLocation visitedLocation : userLocations) {
 			for(Attraction attraction : attractions) {
@@ -80,19 +78,19 @@ public class RewardsService {
 		executor.shutdown();
 	}
 
-	public boolean isWithinAttractionProximity(tourGuide.beans.Attraction attraction, Location location) {
+	public boolean isWithinAttractionProximity(Attraction attraction, Location location) {
 		return getDistance(attraction, location) > attractionProximityRange ? false : true;
 	}
 	
-	private boolean nearAttraction(tourGuide.beans.VisitedLocation visitedLocation, tourGuide.beans.Attraction attraction) {
+	private boolean nearAttraction(VisitedLocation visitedLocation, Attraction attraction) {
 		return getDistance(attraction, visitedLocation.location) > proximityBuffer ? false : true;
 	}
 	
-	public int getRewardPoints(tourGuide.beans.Attraction attraction, User user) {
+	public int getRewardPoints(Attraction attraction, User user) {
 		return rewardCentralProxy.getAttractionRewardPoints(attraction.attractionId, user.getUserId());
 	}
 	
-	public double getDistance(tourGuide.beans.Attraction loc1, tourGuide.beans.Location loc2) {
+	public double getDistance(Attraction loc1, Location loc2) {
         double lat1 = Math.toRadians(loc1.latitude);
         double lon1 = Math.toRadians(loc1.longitude);
         double lat2 = Math.toRadians(loc2.latitude);
