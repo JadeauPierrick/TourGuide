@@ -4,7 +4,7 @@ plugins {
 	id 'java'
 }
 
-group = 'tourGuide'
+group = 'com.TripPricer'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '1.8'
 
@@ -16,7 +16,7 @@ repositories {
 }
 
 ext {
-	set('springCloudVersion', "2020.0.3")
+	set('springCloudVersion', "2021.0.1")
 }
 
 dependencies {

@@ -30,6 +30,7 @@ public class TestPerformance {
 	private RewardsService rewardsService;
 
 
+
 	private int visitations;
 	
 	/*
@@ -61,7 +62,7 @@ public class TestPerformance {
 	public void highVolumeTrackLocation() {
 		// Users should be incremented up to 100,000, and test finishes within 15 minutes
 		InternalTestHelper.setInternalUserNumber(100000);
-		TourGuideService tourGuideService = new TourGuideService(gpsUtilProxy, rewardsService);
+		TourGuideService tourGuideService = new TourGuideService(rewardsService, new InternalTestHelper());
 		tourGuideService.tracker.stopTracking();
 
 		List<User> allUsers = tourGuideService.getAllUsers();
@@ -91,7 +92,7 @@ public class TestPerformance {
 		// Users should be incremented up to 100,000, and test finishes within 20 minutes
 		InternalTestHelper.setInternalUserNumber(100000);
 
-		TourGuideService tourGuideService = new TourGuideService(gpsUtilProxy, rewardsService);
+		TourGuideService tourGuideService = new TourGuideService(rewardsService, new InternalTestHelper());
 		tourGuideService.tracker.stopTracking();
 		List<User> allUsers = tourGuideService.getAllUsers();
 		allUsers.forEach(User::clearVisitedLocations);

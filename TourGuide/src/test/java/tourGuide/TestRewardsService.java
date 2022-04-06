@@ -40,7 +40,7 @@ public class TestRewardsService {
 	public void userGetRewards() {
 
 		InternalTestHelper.setInternalUserNumber(0);
-		TourGuideService tourGuideService = new TourGuideService(gpsUtilProxy, rewardsService);
+		TourGuideService tourGuideService = new TourGuideService(rewardsService, new InternalTestHelper());
 		
 		User user = new User(UUID.randomUUID(), "jon", "000", "jon@tourGuide.com");
 		tourGuide.beans.Attraction attraction = gpsUtilProxy.getAttractions().get(0);
@@ -63,7 +63,7 @@ public class TestRewardsService {
 		rewardsService.setProximityBuffer(Integer.MAX_VALUE);
 
 		InternalTestHelper.setInternalUserNumber(1);
-		TourGuideService tourGuideService = new TourGuideService(gpsUtilProxy, rewardsService);
+		TourGuideService tourGuideService = new TourGuideService(rewardsService, new InternalTestHelper());
 		
 		rewardsService.calculateRewards(tourGuideService.getAllUsers().get(0));
 		List<UserReward> userRewards = tourGuideService.getUserRewards(tourGuideService.getAllUsers().get(0));

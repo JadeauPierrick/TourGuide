@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,9 +19,12 @@ import tourGuide.user.User;
 @RestController
 public class TourGuideController {
 
-	@Autowired
-	TourGuideService tourGuideService;
-	
+	private final TourGuideService tourGuideService;
+
+    public TourGuideController(TourGuideService tourGuideService) {
+        this.tourGuideService = tourGuideService;
+    }
+
     @RequestMapping("/")
     public String index() {
         return "Greetings from TourGuide!";
@@ -66,7 +68,7 @@ public class TourGuideController {
     	//        "019b04a9-067a-4c76-8817-ee75088c3822": {"longitude":-48.188821,"latitude":74.84371} 
     	//        ...
     	//     }
-        Map<UUID, Location> allCurrentLocations = tourGuideService.getAllCurrentLocations();
+        Map<String, Location> allCurrentLocations = tourGuideService.getAllCurrentLocations();
     	return JsonStream.serialize(allCurrentLocations);
     }
     

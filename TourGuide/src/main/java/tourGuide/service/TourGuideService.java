@@ -31,24 +31,28 @@ import tourGuide.user.UserReward;
 @Service
 public class TourGuideService {
 	private final Logger logger = LoggerFactory.getLogger(TourGuideService.class);
-	private final GpsUtilProxy gpsUtilProxy;
-	private final RewardsService rewardsService;
-	private final InternalTestHelper internalTestHelper = new InternalTestHelper();
+
+	@Autowired
+	private GpsUtilProxy gpsUtilProxy;
 	@Autowired
 	private TripPricerProxy tripPricerProxy;
+
+	private final RewardsService rewardsService;
+	private final InternalTestHelper internalTestHelper;
+
 	public final Tracker tracker;
 	boolean testMode = true;
 	private static final String tripPricerApiKey = "test-server-api-key";
 
 
-	public TourGuideService(GpsUtilProxy gpsUtilProxy, RewardsService rewardsService) {
-		this.gpsUtilProxy = gpsUtilProxy;
+	public TourGuideService(RewardsService rewardsService, InternalTestHelper internalTestHelper) {
 		this.rewardsService = rewardsService;
+		this.internalTestHelper = internalTestHelper;
 
 		if(testMode) {
 			logger.info("TestMode enabled");
 			logger.debug("Initializing users");
-			internalTestHelper.initializeInternalUsers();
+			this.internalTestHelper.initializeInternalUsers();
 			logger.debug("Finished initializing users");
 		}
 		tracker = new Tracker(this);
@@ -191,11 +195,11 @@ public class TourGuideService {
 	 *
 	 * @return a map of all locations
 	 */
-	public Map<UUID, Location> getAllCurrentLocations() {
-		Map<UUID, Location> allCurrentLocations = new HashMap<>();
+	public Map<String, Location> getAllCurrentLocations() {
+		Map<String, Location> allCurrentLocations = new HashMap<>();
 		List<User> allUsers = getAllUsers();
 
-		allUsers.forEach(user -> allCurrentLocations.put(user.getUserId(), getUserLocation(user).getLocation()));
+		allUsers.forEach(user -> allCurrentLocations.put(user.getUserId().toString(), getUserLocation(user).getLocation()));
 
 		return allCurrentLocations;
 	}
