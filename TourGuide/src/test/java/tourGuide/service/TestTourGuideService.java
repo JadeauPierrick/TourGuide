@@ -120,7 +120,7 @@ public class TestTourGuideService {
 		userPreferencesDTO.setNumberOfChildren(5);
 		userPreferencesDTO.setTripDuration(10);
 
-		UserPreferences userPreferences = tourGuideService.updateUserPreferences(user,userPreferencesDTO);
+		UserPreferences userPreferences = tourGuideService.updateUserPreferences(user.getUserName(),userPreferencesDTO);
 
 		assertThat(userPreferences.getAttractionProximity()).isEqualTo(50);
 		assertThat(userPreferences.getNumberOfAdults()).isEqualTo(3);

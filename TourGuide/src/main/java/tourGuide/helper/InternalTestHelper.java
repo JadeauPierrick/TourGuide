@@ -13,7 +13,7 @@ import java.util.stream.IntStream;
 
 @Component
 public class InternalTestHelper {
-
+	// Database connection will be used for external users, but for testing purposes internal users are provided and stored in memory
 	private final Logger logger = LoggerFactory.getLogger(InternalTestHelper.class);
 
 	// Set this default up to 100,000 for testing

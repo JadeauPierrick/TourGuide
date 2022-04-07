@@ -1,6 +1,5 @@
 package com.TripPricer.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -13,8 +12,11 @@ import java.util.UUID;
 @RestController
 public class TripPricerController {
 
-    @Autowired
-    private TripPricer tripPricer;
+    private final TripPricer tripPricer;
+
+    public TripPricerController(TripPricer tripPricer) {
+        this.tripPricer = tripPricer;
+    }
 
     @GetMapping(value = "/price")
     public List<Provider> getPrice(@RequestParam("tripPricerApiKey") String tripPricerApiKey, @RequestParam("attractionId") UUID attractionId,

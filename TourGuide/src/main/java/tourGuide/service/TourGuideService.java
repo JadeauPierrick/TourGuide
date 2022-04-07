@@ -26,6 +26,7 @@ import tourGuide.proxies.TripPricerProxy;
 import tourGuide.tracker.Tracker;
 import tourGuide.user.User;
 import tourGuide.user.UserPreferences;
+import tourGuide.user.UserReward;
 
 @Service
 public class TourGuideService {
@@ -92,15 +93,20 @@ public class TourGuideService {
 		}
 	}
 
+	public UserPreferences getUserPreferences(String userName) {
+		logger.info("Get preferences of " + userName);
+		return getUser(userName).getUserPreferences();
+	}
+
 	/**
+	 * Get 5 trip deals based on user's preferences and his rewards points
 	 *
-	 *
-	 * @param user
-	 * @return
+	 * @param user the user whose trip deals we want to obtain
+	 * @return 5 trip deals
 	 */
 	public List<Provider> getTripDeals(User user) {
 		logger.info("Get trip deals of " + user.getUserName());
-		int cumulativeRewardPoints = user.getUserRewards().stream().mapToInt(i -> i.getRewardPoints()).sum();
+		int cumulativeRewardPoints = user.getUserRewards().stream().mapToInt(UserReward::getRewardPoints).sum();
 		List<Provider> providers = tripPricerProxy.getPrice(tripPricerApiKey, user.getUserId(), user.getUserPreferences().getNumberOfAdults(),
 				user.getUserPreferences().getNumberOfChildren(), user.getUserPreferences().getTripDuration(), cumulativeRewardPoints);
 		user.setTripDeals(providers);
@@ -199,8 +205,8 @@ public class TourGuideService {
 		return allCurrentLocations;
 	}
 
-	public UserPreferences updateUserPreferences(User user, UserPreferencesDTO newUserPreferences) {
-		UserPreferences currentPreferences = user.getUserPreferences();
+	public UserPreferences updateUserPreferences(String userName, UserPreferencesDTO newUserPreferences) {
+		UserPreferences currentPreferences = getUserPreferences(userName);
 		if (newUserPreferences.getAttractionProximity() >= 0) {
 			currentPreferences.setAttractionProximity(newUserPreferences.getAttractionProximity());
 		}
@@ -232,12 +238,5 @@ public class TourGuideService {
 		      } 
 		    }); 
 	}
-	
-	/**********************************************************************************
-	 * 
-	 * Methods Below: For Internal Testing
-	 * 
-	 **********************************************************************************/
-	// Database connection will be used for external users, but for testing purposes internal users are provided and stored in memory
-	
+
 }
