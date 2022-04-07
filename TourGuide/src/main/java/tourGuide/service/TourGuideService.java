@@ -26,28 +26,27 @@ import tourGuide.proxies.TripPricerProxy;
 import tourGuide.tracker.Tracker;
 import tourGuide.user.User;
 import tourGuide.user.UserPreferences;
-import tourGuide.user.UserReward;
 
 @Service
 public class TourGuideService {
 	private final Logger logger = LoggerFactory.getLogger(TourGuideService.class);
 
 	@Autowired
-	private GpsUtilProxy gpsUtilProxy;
-	@Autowired
 	private TripPricerProxy tripPricerProxy;
 
+	private final InternalTestHelper internalTestHelper = new InternalTestHelper();
+
+	private final GpsUtilProxy gpsUtilProxy;
 	private final RewardsService rewardsService;
-	private final InternalTestHelper internalTestHelper;
 
 	public final Tracker tracker;
 	boolean testMode = true;
 	private static final String tripPricerApiKey = "test-server-api-key";
 
 
-	public TourGuideService(RewardsService rewardsService, InternalTestHelper internalTestHelper) {
+	public TourGuideService(GpsUtilProxy gpsUtilProxy, RewardsService rewardsService) {
+		this.gpsUtilProxy = gpsUtilProxy;
 		this.rewardsService = rewardsService;
-		this.internalTestHelper = internalTestHelper;
 
 		if(testMode) {
 			logger.info("TestMode enabled");
@@ -57,10 +56,6 @@ public class TourGuideService {
 		}
 		tracker = new Tracker(this);
 		addShutDownHook();
-	}
-	
-	public List<UserReward> getUserRewards(User user) {
-		return user.getUserRewards();
 	}
 
 	/**

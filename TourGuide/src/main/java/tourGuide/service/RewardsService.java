@@ -26,12 +26,14 @@ public class RewardsService {
     private int defaultProximityBuffer = 10;
 	private int proximityBuffer = defaultProximityBuffer;
 	private int attractionProximityRange = 200;
-	@Autowired
-	private GpsUtilProxy gpsUtilProxy;
-	@Autowired
-	private RewardCentralProxy rewardCentralProxy;
+	private final GpsUtilProxy gpsUtilProxy;
+	private final RewardCentralProxy rewardCentralProxy;
 
-	
+	public RewardsService(GpsUtilProxy gpsUtilProxy, RewardCentralProxy rewardCentralProxy) {
+		this.gpsUtilProxy = gpsUtilProxy;
+		this.rewardCentralProxy = rewardCentralProxy;
+	}
+
 	public void setProximityBuffer(int proximityBuffer) {
 		this.proximityBuffer = proximityBuffer;
 	}
@@ -104,4 +106,7 @@ public class RewardsService {
         return statuteMiles;
 	}
 
+	public List<UserReward> getUserRewards(User user) {
+		return user.getUserRewards();
+	}
 }

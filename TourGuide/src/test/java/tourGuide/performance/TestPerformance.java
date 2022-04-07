@@ -1,35 +1,34 @@
-package tourGuide;
-
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+package tourGuide.performance;
 
 import java.util.*;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.commons.lang3.time.StopWatch;
-import org.junit.Before;
-import org.junit.Test;
 
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import tourGuide.beans.Attraction;
 import tourGuide.beans.VisitedLocation;
 import tourGuide.helper.InternalTestHelper;
 import tourGuide.proxies.GpsUtilProxy;
+import tourGuide.proxies.RewardCentralProxy;
 import tourGuide.service.RewardsService;
 import tourGuide.service.TourGuideService;
 import tourGuide.user.User;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @SpringBootTest
 public class TestPerformance {
 
 	@Autowired
 	private GpsUtilProxy gpsUtilProxy;
-
 	@Autowired
-	private RewardsService rewardsService;
-
-
+	private RewardCentralProxy rewardCentralProxy;
 
 	private int visitations;
 	
@@ -53,16 +52,18 @@ public class TestPerformance {
 	 *          assertTrue(TimeUnit.MINUTES.toSeconds(20) >= TimeUnit.MILLISECONDS.toSeconds(stopWatch.getTime()));
 	 */
 
-	@Before
-	public void setUp() {
+	@BeforeAll
+	static void setUp() {
 		Locale.setDefault(Locale.US);
+		InternalTestHelper.setInternalUserNumber(10);
 	}
+
 
 	@Test
 	public void highVolumeTrackLocation() {
 		// Users should be incremented up to 100,000, and test finishes within 15 minutes
-		InternalTestHelper.setInternalUserNumber(100000);
-		TourGuideService tourGuideService = new TourGuideService(rewardsService, new InternalTestHelper());
+		RewardsService rewardsService = new RewardsService(gpsUtilProxy,rewardCentralProxy);
+		TourGuideService tourGuideService = new TourGuideService(gpsUtilProxy,rewardsService);
 		tourGuideService.tracker.stopTracking();
 
 		List<User> allUsers = tourGuideService.getAllUsers();
@@ -90,16 +91,17 @@ public class TestPerformance {
 	@Test
 	public void highVolumeGetRewards() {
 		// Users should be incremented up to 100,000, and test finishes within 20 minutes
-		InternalTestHelper.setInternalUserNumber(100000);
-
-		TourGuideService tourGuideService = new TourGuideService(rewardsService, new InternalTestHelper());
+		RewardsService rewardsService = new RewardsService(gpsUtilProxy,rewardCentralProxy);
+		TourGuideService tourGuideService = new TourGuideService(gpsUtilProxy,rewardsService);
 		tourGuideService.tracker.stopTracking();
+
 		List<User> allUsers = tourGuideService.getAllUsers();
 		allUsers.forEach(User::clearVisitedLocations);
 		allUsers.forEach(u-> u.setUserRewards(new ArrayList<>()));
 
 		StopWatch stopWatch = new StopWatch();
 		stopWatch.start();
+
 		Attraction attraction = gpsUtilProxy.getAttractions().get(0);
 
 		allUsers.forEach(u -> u.addToVisitedLocations(new VisitedLocation(u.getUserId(), attraction, new Date())));
