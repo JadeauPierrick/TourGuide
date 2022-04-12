@@ -2,7 +2,6 @@ package tourGuide.service;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-import static org.mockito.Mockito.when;
 
 import java.util.*;
 
@@ -11,7 +10,6 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
 import tourGuide.beans.Location;
 import tourGuide.beans.Provider;
 import tourGuide.beans.VisitedLocation;
@@ -34,8 +32,6 @@ public class TestTourGuideService {
 	@Autowired
 	private RewardsService rewardsService;
 
-	@MockBean
-	private InternalTestHelper internalTestHelper;
 
 	private User user;
 	private Map<String, User> userMap;
@@ -49,8 +45,6 @@ public class TestTourGuideService {
 		userMap = new HashMap<>();
 		user = new User(UUID.randomUUID(), "jon", "000", "jon@tourGuide.com");
 		userMap.put(user.getUserName(), user);
-
-		when(internalTestHelper.getInternalUserMap()).thenReturn(userMap);
 
 		tourGuideService.tracker.stopTracking();
 	}

@@ -1,0 +1,39 @@
+version: '3'
+services:
+  gpsUtil:
+    build:
+      context: GpsUtil
+      dockerfile: Dockerfile
+    container_name: gsputil-container
+    image: gpsutil:1.0
+    ports:
+      - "8081:8081"
+  rewardCentral:
+    build:
+      context: RewardCentral
+      dockerfile: Dockerfile
+    container_name: rewardcentral-container
+    image: rewardcentral:1.0
+    ports:
+      - "8082:8082"
+  tripPricer:
+    build:
+      context: TripPricer
+      dockerfile: Dockerfile
+    container_name: trippricer-container
+    image: trippricer:1.0
+    ports:
+      - "8083:8083"
+  tourGuide:
+    build:
+      context: TourGuide
+      dockerfile: Dockerfile
+    container_name: tourguide-container
+    image: tourguide:1.0
+    ports:
+      - "8080:8080"
+    depends_on:
+      - gpsUtil
+      - rewardCentral
+      - tripPricer
+

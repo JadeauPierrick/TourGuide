@@ -2,38 +2,41 @@
 
 import java.util.List;
 import java.util.Map;
-import java.util.UUID;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.jsoniter.output.JsonStream;
 
 import tourGuide.beans.Location;
 import tourGuide.beans.Provider;
 import tourGuide.beans.VisitedLocation;
+import tourGuide.dto.UserPreferencesDTO;
+import tourGuide.service.RewardsService;
 import tourGuide.service.TourGuideService;
 import tourGuide.user.User;
+import tourGuide.user.UserPreferences;
 
 @RestController
 public class TourGuideController {
 
 	private final TourGuideService tourGuideService;
 
-<span class="fc" id="L24">    public TourGuideController(TourGuideService tourGuideService) {</span>
-<span class="fc" id="L25">        this.tourGuideService = tourGuideService;</span>
-<span class="fc" id="L26">    }</span>
+	private final RewardsService rewardsService;
+
+<span class="fc" id="L26">    public TourGuideController(TourGuideService tourGuideService, RewardsService rewardsService) {</span>
+<span class="fc" id="L27">        this.tourGuideService = tourGuideService;</span>
+<span class="fc" id="L28">        this.rewardsService = rewardsService;</span>
+<span class="fc" id="L29">    }</span>
 
     @RequestMapping(&quot;/&quot;)
     public String index() {
-<span class="nc" id="L30">        return &quot;Greetings from TourGuide!&quot;;</span>
+<span class="nc" id="L33">        return &quot;Greetings from TourGuide!&quot;;</span>
     }
     
     @RequestMapping(&quot;/getLocation&quot;) 
     public String getLocation(@RequestParam String userName) {
-<span class="nc" id="L35">    	VisitedLocation visitedLocation = tourGuideService.getUserLocation(tourGuideService.getUser(userName));</span>
-<span class="nc" id="L36">		return JsonStream.serialize(visitedLocation.location);</span>
+<span class="nc" id="L38">    	VisitedLocation visitedLocation = tourGuideService.getUserLocation(tourGuideService.getUser(userName));</span>
+<span class="nc" id="L39">		return JsonStream.serialize(visitedLocation.location);</span>
     }
     
     //  TODO: Change this method to no longer return a List of Attractions.
@@ -47,14 +50,14 @@ public class TourGuideController {
         //    Note: Attraction reward points can be gathered from RewardsCentral
     @RequestMapping(&quot;/getNearbyAttractions&quot;) 
     public String getNearbyAttractions(@RequestParam String userName) {
-<span class="nc" id="L50">        User user = tourGuideService.getUser(userName);</span>
-<span class="nc" id="L51">    	tourGuide.beans.VisitedLocation visitedLocation = tourGuideService.getUserLocation(tourGuideService.getUser(userName));</span>
-<span class="nc" id="L52">    	return JsonStream.serialize(tourGuideService.getNearByAttractions(visitedLocation, user));</span>
+<span class="nc" id="L53">        User user = tourGuideService.getUser(userName);</span>
+<span class="nc" id="L54">    	VisitedLocation visitedLocation = tourGuideService.getUserLocation(tourGuideService.getUser(userName));</span>
+<span class="nc" id="L55">    	return JsonStream.serialize(tourGuideService.getNearByAttractions(visitedLocation, user));</span>
     }
     
     @RequestMapping(&quot;/getRewards&quot;) 
     public String getRewards(@RequestParam String userName) {
-<span class="nc" id="L57">    	return JsonStream.serialize(tourGuideService.getUserRewards(tourGuideService.getUser(userName)));</span>
+<span class="nc" id="L60">    	return JsonStream.serialize(rewardsService.getUserRewards(tourGuideService.getUser(userName)));</span>
     }
     
     @RequestMapping(&quot;/getAllCurrentLocations&quot;)
@@ -68,15 +71,26 @@ public class TourGuideController {
     	//        &quot;019b04a9-067a-4c76-8817-ee75088c3822&quot;: {&quot;longitude&quot;:-48.188821,&quot;latitude&quot;:74.84371} 
     	//        ...
     	//     }
-<span class="nc" id="L71">        Map&lt;String, Location&gt; allCurrentLocations = tourGuideService.getAllCurrentLocations();</span>
-<span class="nc" id="L72">    	return JsonStream.serialize(allCurrentLocations);</span>
+<span class="nc" id="L74">        Map&lt;String, Location&gt; allCurrentLocations = tourGuideService.getAllCurrentLocations();</span>
+<span class="nc" id="L75">    	return JsonStream.serialize(allCurrentLocations);</span>
     }
     
     @RequestMapping(&quot;/getTripDeals&quot;)
     public String getTripDeals(@RequestParam String userName) {
-<span class="nc" id="L77">    	List&lt;Provider&gt; providers = tourGuideService.getTripDeals(tourGuideService.getUser(userName));</span>
-<span class="nc" id="L78">    	return JsonStream.serialize(providers);</span>
+<span class="nc" id="L80">    	List&lt;Provider&gt; providers = tourGuideService.getTripDeals(tourGuideService.getUser(userName));</span>
+<span class="nc" id="L81">    	return JsonStream.serialize(providers);</span>
     }
 
+    @GetMapping(&quot;/getUserPreferences&quot;)
+    public String getUserPreferences(@RequestParam String userName) {
+<span class="nc" id="L86">        UserPreferences userPreferences = tourGuideService.getUserPreferences(userName);</span>
+<span class="nc" id="L87">        return JsonStream.serialize(userPreferences);</span>
+    }
+
+    @PutMapping(&quot;/updateUserPreferences&quot;)
+    public String updateUserPreferences(@RequestParam String userName, @RequestBody UserPreferencesDTO userPreferencesDTO) {
+<span class="nc" id="L92">        UserPreferences userPreferences = tourGuideService.updateUserPreferences(userName, userPreferencesDTO);</span>
+<span class="nc" id="L93">        return JsonStream.serialize(userPreferences);</span>
+    }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

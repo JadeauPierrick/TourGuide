@@ -6,7 +6,6 @@ import java.util.concurrent.TimeUnit;
 import org.apache.commons.lang3.time.StopWatch;
 
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -55,7 +54,6 @@ public class TestPerformance {
 	@BeforeAll
 	static void setUp() {
 		Locale.setDefault(Locale.US);
-		InternalTestHelper.setInternalUserNumber(10);
 	}
 
 
@@ -63,6 +61,7 @@ public class TestPerformance {
 	public void highVolumeTrackLocation() {
 		// Users should be incremented up to 100,000, and test finishes within 15 minutes
 		RewardsService rewardsService = new RewardsService(gpsUtilProxy,rewardCentralProxy);
+		InternalTestHelper.setInternalUserNumber(10);
 		TourGuideService tourGuideService = new TourGuideService(gpsUtilProxy,rewardsService);
 		tourGuideService.tracker.stopTracking();
 
@@ -92,6 +91,7 @@ public class TestPerformance {
 	public void highVolumeGetRewards() {
 		// Users should be incremented up to 100,000, and test finishes within 20 minutes
 		RewardsService rewardsService = new RewardsService(gpsUtilProxy,rewardCentralProxy);
+		InternalTestHelper.setInternalUserNumber(10);
 		TourGuideService tourGuideService = new TourGuideService(gpsUtilProxy,rewardsService);
 		tourGuideService.tracker.stopTracking();
 
