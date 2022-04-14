@@ -8,7 +8,7 @@ import tourGuide.beans.Provider;
 import java.util.List;
 import java.util.UUID;
 
-@FeignClient(name = "tripPricer", url = "http://localhost:8083")
+@FeignClient(name = "tripPricer", url = "${trippricer.url}")
 public interface TripPricerProxy {
 
     @GetMapping(value = "/price")

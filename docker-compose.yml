@@ -1,0 +1,36 @@
+version: '3'
+services:
+  tourGuide:
+    container_name: tourguide-app
+    build: TourGuide/
+    image: tourguide:1.0
+    ports:
+      - "8080:8080"
+    environment:
+      GPSUTIL_API_URL: http://gpsutil-app:8081
+      REWARDCENTRAL_API_URL: http://rewardCentral-app:8082
+      TRIPPRICER_API_URL: http://tripPricer-app:8083
+    depends_on:
+      - gpsUtil
+      - rewardCentral
+      - tripPricer
+  gpsUtil:
+    container_name: gpsutil-app
+    build: GpsUtil/
+    image: gpsutil:1.0
+    ports:
+      - "8081:8081"
+  rewardCentral:
+    container_name: rewardCentral-app
+    build: RewardCentral/
+    image: rewardcentral:1.0
+    ports:
+      - "8082:8082"
+  tripPricer:
+    container_name: tripPricer-app
+    build: TripPricer/
+    image: trippricer:1.0
+    ports:
+      - "8083:8083"
+
+

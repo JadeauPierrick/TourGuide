@@ -34,8 +34,8 @@ public class RewardsService {
 <span class="fc" id="L34">	}</span>
 
 	public void setProximityBuffer(int proximityBuffer) {
-<span class="fc" id="L37">		this.proximityBuffer = proximityBuffer;</span>
-<span class="fc" id="L38">	}</span>
+<span class="nc" id="L37">		this.proximityBuffer = proximityBuffer;</span>
+<span class="nc" id="L38">	}</span>
 	
 	public void setDefaultProximityBuffer() {
 <span class="nc" id="L41">		proximityBuffer = defaultProximityBuffer;</span>
@@ -80,7 +80,7 @@ public class RewardsService {
 <span class="fc" id="L80">	}</span>
 
 	public boolean isWithinAttractionProximity(Attraction attraction, Location location) {
-<span class="pc bpc" id="L83" title="1 of 2 branches missed.">		return getDistance(attraction, location) &gt; attractionProximityRange ? false : true;</span>
+<span class="nc bnc" id="L83" title="All 2 branches missed.">		return getDistance(attraction, location) &gt; attractionProximityRange ? false : true;</span>
 	}
 	
 	private boolean nearAttraction(VisitedLocation visitedLocation, Attraction attraction) {
@@ -106,7 +106,7 @@ public class RewardsService {
 	}
 
 	public List&lt;UserReward&gt; getUserRewards(User user) {
-<span class="fc" id="L109">		return user.getUserRewards();</span>
+<span class="nc" id="L109">		return user.getUserRewards();</span>
 	}
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

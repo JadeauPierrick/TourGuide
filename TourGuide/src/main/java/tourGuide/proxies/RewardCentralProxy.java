@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.UUID;
 
-@FeignClient(name = "rewardCentral", url = "http://localhost:8082")
+@FeignClient(name = "rewardCentral", url = "${rewardcentral.url}")
 public interface RewardCentralProxy {
 
     @GetMapping(value = "/getAttractionRewardPoints")
