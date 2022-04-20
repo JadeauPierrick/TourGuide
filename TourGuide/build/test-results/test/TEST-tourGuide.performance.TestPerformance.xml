@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="tourGuide.performance.TestPerformance" tests="2" skipped="0" failures="0" errors="0" timestamp="2022-04-20T20:05:36" hostname="AirdeJacques2" time="3.599">
+  <properties/>
+  <testcase name="highVolumeTrackLocation()" classname="tourGuide.performance.TestPerformance" time="1.849"/>
+  <testcase name="highVolumeGetRewards()" classname="tourGuide.performance.TestPerformance" time="1.748"/>
+  <system-out><![CDATA[2022-04-20 22:05:33.289  INFO 18376 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Neither @ContextConfiguration nor @ContextHierarchy found for test class [tourGuide.performance.TestPerformance], using SpringBootContextLoader
+2022-04-20 22:05:33.291  INFO 18376 --- [    Test worker] o.s.t.c.support.AbstractContextLoader    : Could not detect default resource locations for test class [tourGuide.performance.TestPerformance]: no resource found for suffixes {-context.xml, Context.groovy}.
+2022-04-20 22:05:33.292  INFO 18376 --- [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [tourGuide.performance.TestPerformance]: TestPerformance does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2022-04-20 22:05:33.321  INFO 18376 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration tourGuide.Application for test class tourGuide.performance.TestPerformance
+2022-04-20 22:05:33.325  INFO 18376 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+2022-04-20 22:05:33.330  INFO 18376 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@1320fd4d, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@7186e910, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@55a3119a, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@2794b25f, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@334ae975, org.springframework.test.context.support.DirtiesContextTestExecutionListener@75424865, org.springframework.test.context.event.EventPublishingTestExecutionListener@38a0b896, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@3a24f397, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@5e41a4e7, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@39a7de2a, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@4feb580, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@19db46c3, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@4a6eaf83]
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v2.6.5)
+
+2022-04-20 22:05:33.466  INFO 18376 --- [    Test worker] tourGuide.performance.TestPerformance    : Starting TestPerformance using Java 1.8.0_302 on AirdeJacques2 with PID 18376 (started by jacquesgrellier in /Users/jacquesgrellier/Desktop/Formation Développeur JAVA/Projet 8/TourGuide)
+2022-04-20 22:05:33.467 DEBUG 18376 --- [    Test worker] tourGuide.performance.TestPerformance    : Running with Spring Boot v2.6.5, Spring v5.3.17
+2022-04-20 22:05:33.468  INFO 18376 --- [    Test worker] tourGuide.performance.TestPerformance    : No active profile set, falling back to 1 default profile: "default"
+2022-04-20 22:05:34.451  INFO 18376 --- [    Test worker] o.s.cloud.context.scope.GenericScope     : BeanFactory id=5749b3f6-5170-3b04-8efb-247a648f665e
+2022-04-20 22:05:35.149  INFO 18376 --- [    Test worker] tourGuide.service.TourGuideService       : TestMode enabled
+2022-04-20 22:05:35.149 DEBUG 18376 --- [    Test worker] tourGuide.service.TourGuideService       : Initializing users
+2022-04-20 22:05:35.151 DEBUG 18376 --- [    Test worker] tourGuide.service.TourGuideService       : Created 1 internal test users.
+2022-04-20 22:05:35.151 DEBUG 18376 --- [    Test worker] tourGuide.service.TourGuideService       : Finished initializing users
+2022-04-20 22:05:36.677  INFO 18376 --- [    Test worker] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint(s) beneath base path '/actuator'
+2022-04-20 22:05:36.772  INFO 18376 --- [    Test worker] tourGuide.performance.TestPerformance    : Started TestPerformance in 3.432 seconds (JVM running for 31.886)
+2022-04-20 22:05:36.786  INFO 18376 --- [    Test worker] tourGuide.service.TourGuideService       : TestMode enabled
+2022-04-20 22:05:36.786 DEBUG 18376 --- [    Test worker] tourGuide.service.TourGuideService       : Initializing users
+2022-04-20 22:05:36.842 DEBUG 18376 --- [    Test worker] tourGuide.service.TourGuideService       : Created 100 internal test users.
+2022-04-20 22:05:36.843 DEBUG 18376 --- [    Test worker] tourGuide.service.TourGuideService       : Finished initializing users
+2022-04-20 22:05:36.843  INFO 18376 --- [    Test worker] tourGuide.service.TourGuideService       : Get all users
+2022-04-20 22:05:36.853  INFO 18376 --- [    Test worker] tourGuide.service.TourGuideService       : Multithreading to get all locations
+2022-04-20 22:05:36.856  INFO 18376 --- [pool-1-thread-1] tourGuide.service.TourGuideService       : Research the location of internalUser78
+2022-04-20 22:05:36.857  INFO 18376 --- [pool-1-thread-2] tourGuide.service.TourGuideService       : Research the location of internalUser77
+2022-04-20 22:05:36.866  INFO 18376 --- [pool-1-thread-3] tourGuide.service.TourGuideService       : Research the location of internalUser79
+2022-04-20 22:05:36.879  INFO 18376 --- [pool-1-thread-4] tourGuide.service.TourGuideService       : Research the location of internalUser74
+2022-04-20 22:05:36.898  INFO 18376 --- [pool-1-thread-5] tourGuide.service.TourGuideService       : Research the location of internalUser73
+2022-04-20 22:05:36.902  INFO 18376 --- [pool-1-thread-6] tourGuide.service.TourGuideService       : Research the location of internalUser76
+2022-04-20 22:05:36.919  INFO 18376 --- [pool-1-thread-7] tourGuide.service.TourGuideService       : Research the location of internalUser75
+2022-04-20 22:05:36.922  INFO 18376 --- [pool-1-thread-8] tourGuide.service.TourGuideService       : Research the location of internalUser70
+2022-04-20 22:05:36.925  INFO 18376 --- [pool-1-thread-9] tourGuide.service.TourGuideService       : Research the location of internalUser72
+2022-04-20 22:05:36.928  INFO 18376 --- [ool-1-thread-10] tourGuide.service.TourGuideService       : Research the location of internalUser71
+2022-04-20 22:05:36.930  INFO 18376 --- [ool-1-thread-11] tourGuide.service.TourGuideService       : Research the location of internalUser90
+2022-04-20 22:05:36.930  INFO 18376 --- [ool-1-thread-12] tourGuide.service.TourGuideService       : Research the location of internalUser89
+2022-04-20 22:05:36.932  INFO 18376 --- [ool-1-thread-13] tourGuide.service.TourGuideService       : Research the location of internalUser88
+2022-04-20 22:05:37.003  INFO 18376 --- [ool-1-thread-16] tourGuide.service.TourGuideService       : Research the location of internalUser87
+2022-04-20 22:05:37.005  INFO 18376 --- [ool-1-thread-14] tourGuide.service.TourGuideService       : Research the location of internalUser85
+2022-04-20 22:05:37.007  INFO 18376 --- [ool-1-thread-15] tourGuide.service.TourGuideService       : Research the location of internalUser84
+2022-04-20 22:05:37.024  INFO 18376 --- [ool-1-thread-17] tourGuide.service.TourGuideService       : Research the location of internalUser86
+2022-04-20 22:05:37.028  INFO 18376 --- [ool-1-thread-18] tourGuide.service.TourGuideService       : Research the location of internalUser81
+2022-04-20 22:05:37.042  INFO 18376 --- [ool-1-thread-19] tourGuide.service.TourGuideService       : Research the location of internalUser80
+2022-04-20 22:05:37.045  INFO 18376 --- [ool-1-thread-20] tourGuide.service.TourGuideService       : Research the location of internalUser83
+2022-04-20 22:05:37.047  INFO 18376 --- [ool-1-thread-21] tourGuide.service.TourGuideService       : Research the location of internalUser82
+2022-04-20 22:05:37.050  INFO 18376 --- [ool-1-thread-22] tourGuide.service.TourGuideService       : Research the location of internalUser9
+2022-04-20 22:05:37.052  INFO 18376 --- [ool-1-thread-23] tourGuide.service.TourGuideService       : Research the location of internalUser8
+2022-04-20 22:05:37.053  INFO 18376 --- [ool-1-thread-24] tourGuide.service.TourGuideService       : Research the location of internalUser19
+2022-04-20 22:05:37.073  INFO 18376 --- [ool-1-thread-25] tourGuide.service.TourGuideService       : Research the location of internalUser16
+2022-04-20 22:05:37.098  INFO 18376 --- [ool-1-thread-26] tourGuide.service.TourGuideService       : Research the location of internalUser15
+2022-04-20 22:05:37.134  INFO 18376 --- [ool-1-thread-27] tourGuide.service.TourGuideService       : Research the location of internalUser18
+2022-04-20 22:05:37.136  INFO 18376 --- [ool-1-thread-28] tourGuide.service.TourGuideService       : Research the location of internalUser17
+2022-04-20 22:05:37.136  INFO 18376 --- [ool-1-thread-29] tourGuide.service.TourGuideService       : Research the location of internalUser12
+2022-04-20 22:05:37.139  INFO 18376 --- [ool-1-thread-30] tourGuide.service.TourGuideService       : Research the location of internalUser11
+2022-04-20 22:05:37.140  INFO 18376 --- [ool-1-thread-31] tourGuide.service.TourGuideService       : Research the location of internalUser99
+2022-04-20 22:05:37.142  INFO 18376 --- [ool-1-thread-32] tourGuide.service.TourGuideService       : Research the location of internalUser14
+2022-04-20 22:05:37.142  INFO 18376 --- [ool-1-thread-33] tourGuide.service.TourGuideService       : Research the location of internalUser13
+2022-04-20 22:05:37.143  INFO 18376 --- [ool-1-thread-34] tourGuide.service.TourGuideService       : Research the location of internalUser3
+2022-04-20 22:05:37.144  INFO 18376 --- [ool-1-thread-35] tourGuide.service.TourGuideService       : Research the location of internalUser96
+2022-04-20 22:05:37.144  INFO 18376 --- [ool-1-thread-36] tourGuide.service.TourGuideService       : Research the location of internalUser2
+2022-04-20 22:05:37.145  INFO 18376 --- [ool-1-thread-37] tourGuide.service.TourGuideService       : Research the location of internalUser95
+2022-04-20 22:05:37.146  INFO 18376 --- [ool-1-thread-38] tourGuide.service.TourGuideService       : Research the location of internalUser1
+2022-04-20 22:05:37.147  INFO 18376 --- [ool-1-thread-39] tourGuide.service.TourGuideService       : Research the location of internalUser10
+2022-04-20 22:05:37.147  INFO 18376 --- [ool-1-thread-40] tourGuide.service.TourGuideService       : Research the location of internalUser98
+2022-04-20 22:05:37.149  INFO 18376 --- [ool-1-thread-41] tourGuide.service.TourGuideService       : Research the location of internalUser0
+2022-04-20 22:05:37.149  INFO 18376 --- [ool-1-thread-42] tourGuide.service.TourGuideService       : Research the location of internalUser97
+2022-04-20 22:05:37.151  INFO 18376 --- [ool-1-thread-43] tourGuide.service.TourGuideService       : Research the location of internalUser7
+2022-04-20 22:05:37.152  INFO 18376 --- [ool-1-thread-44] tourGuide.service.TourGuideService       : Research the location of internalUser92
+2022-04-20 22:05:37.154  INFO 18376 --- [ool-1-thread-45] tourGuide.service.TourGuideService       : Research the location of internalUser6
+2022-04-20 22:05:37.154  INFO 18376 --- [ool-1-thread-46] tourGuide.service.TourGuideService       : Research the location of internalUser91
+2022-04-20 22:05:37.159  INFO 18376 --- [ool-1-thread-47] tourGuide.service.TourGuideService       : Research the location of internalUser5
+2022-04-20 22:05:37.164  INFO 18376 --- [ool-1-thread-48] tourGuide.service.TourGuideService       : Research the location of internalUser94
+2022-04-20 22:05:37.164  INFO 18376 --- [ool-1-thread-49] tourGuide.service.TourGuideService       : Research the location of internalUser4
+2022-04-20 22:05:37.167  INFO 18376 --- [ool-1-thread-50] tourGuide.service.TourGuideService       : Research the location of internalUser93
+2022-04-20 22:05:37.167  INFO 18376 --- [ool-1-thread-51] tourGuide.service.TourGuideService       : Research the location of internalUser27
+2022-04-20 22:05:37.170  INFO 18376 --- [ool-1-thread-52] tourGuide.service.TourGuideService       : Research the location of internalUser26
+2022-04-20 22:05:37.183  INFO 18376 --- [ool-1-thread-53] tourGuide.service.TourGuideService       : Research the location of internalUser29
+2022-04-20 22:05:37.185  INFO 18376 --- [ool-1-thread-54] tourGuide.service.TourGuideService       : Research the location of internalUser28
+2022-04-20 22:05:37.186  INFO 18376 --- [ool-1-thread-55] tourGuide.service.TourGuideService       : Research the location of internalUser23
+2022-04-20 22:05:37.189  INFO 18376 --- [ool-1-thread-56] tourGuide.service.TourGuideService       : Research the location of internalUser22
+2022-04-20 22:05:37.191  INFO 18376 --- [ool-1-thread-57] tourGuide.service.TourGuideService       : Research the location of internalUser25
+2022-04-20 22:05:37.191  INFO 18376 --- [ool-1-thread-58] tourGuide.service.TourGuideService       : Research the location of internalUser24
+2022-04-20 22:05:37.193  INFO 18376 --- [ool-1-thread-59] tourGuide.service.TourGuideService       : Research the location of internalUser21
+2022-04-20 22:05:37.195  INFO 18376 --- [ool-1-thread-60] tourGuide.service.TourGuideService       : Research the location of internalUser20
+2022-04-20 22:05:37.196  INFO 18376 --- [ool-1-thread-61] tourGuide.service.TourGuideService       : Research the location of internalUser38
+2022-04-20 22:05:37.197  INFO 18376 --- [ool-1-thread-62] tourGuide.service.TourGuideService       : Research the location of internalUser37
+2022-04-20 22:05:37.211  INFO 18376 --- [ool-1-thread-63] tourGuide.service.TourGuideService       : Research the location of internalUser39
+2022-04-20 22:05:37.212  INFO 18376 --- [ool-1-thread-64] tourGuide.service.TourGuideService       : Research the location of internalUser34
+2022-04-20 22:05:37.213  INFO 18376 --- [ool-1-thread-65] tourGuide.service.TourGuideService       : Research the location of internalUser33
+2022-04-20 22:05:37.215  INFO 18376 --- [ool-1-thread-66] tourGuide.service.TourGuideService       : Research the location of internalUser36
+2022-04-20 22:05:37.244  INFO 18376 --- [ool-1-thread-67] tourGuide.service.TourGuideService       : Research the location of internalUser35
+2022-04-20 22:05:37.249  INFO 18376 --- [ool-1-thread-68] tourGuide.service.TourGuideService       : Research the location of internalUser30
+2022-04-20 22:05:37.255  INFO 18376 --- [ool-1-thread-69] tourGuide.service.TourGuideService       : Research the location of internalUser32
+2022-04-20 22:05:37.260  INFO 18376 --- [ool-1-thread-70] tourGuide.service.TourGuideService       : Research the location of internalUser31
+2022-04-20 22:05:37.280  INFO 18376 --- [ool-1-thread-71] tourGuide.service.TourGuideService       : Research the location of internalUser49
+2022-04-20 22:05:37.305  INFO 18376 --- [ool-1-thread-72] tourGuide.service.TourGuideService       : Research the location of internalUser48
+2022-04-20 22:05:37.319  INFO 18376 --- [ool-1-thread-73] tourGuide.service.TourGuideService       : Research the location of internalUser45
+2022-04-20 22:05:37.332  INFO 18376 --- [ool-1-thread-75] tourGuide.service.TourGuideService       : Research the location of internalUser47
+2022-04-20 22:05:37.332  INFO 18376 --- [ool-1-thread-74] tourGuide.service.TourGuideService       : Research the location of internalUser44
+2022-04-20 22:05:37.347  INFO 18376 --- [ool-1-thread-76] tourGuide.service.TourGuideService       : Research the location of internalUser46
+2022-04-20 22:05:37.353  INFO 18376 --- [ool-1-thread-77] tourGuide.service.TourGuideService       : Research the location of internalUser41
+2022-04-20 22:05:37.354  INFO 18376 --- [ool-1-thread-78] tourGuide.service.TourGuideService       : Research the location of internalUser40
+2022-04-20 22:05:37.363  INFO 18376 --- [ool-1-thread-79] tourGuide.service.TourGuideService       : Research the location of internalUser43
+2022-04-20 22:05:37.367  INFO 18376 --- [ool-1-thread-80] tourGuide.service.TourGuideService       : Research the location of internalUser42
+2022-04-20 22:05:37.369  INFO 18376 --- [ool-1-thread-81] tourGuide.service.TourGuideService       : Research the location of internalUser59
+2022-04-20 22:05:37.372  INFO 18376 --- [ool-1-thread-82] tourGuide.service.TourGuideService       : Research the location of internalUser56
+2022-04-20 22:05:37.372  INFO 18376 --- [ool-1-thread-83] tourGuide.service.TourGuideService       : Research the location of internalUser55
+2022-04-20 22:05:37.375  INFO 18376 --- [ool-1-thread-84] tourGuide.service.TourGuideService       : Research the location of internalUser58
+2022-04-20 22:05:37.375  INFO 18376 --- [ool-1-thread-85] tourGuide.service.TourGuideService       : Research the location of internalUser57
+2022-04-20 22:05:37.377  INFO 18376 --- [ool-1-thread-86] tourGuide.service.TourGuideService       : Research the location of internalUser52
+2022-04-20 22:05:37.378  INFO 18376 --- [ool-1-thread-87] tourGuide.service.TourGuideService       : Research the location of internalUser51
+2022-04-20 22:05:37.379  INFO 18376 --- [ool-1-thread-88] tourGuide.service.TourGuideService       : Research the location of internalUser54
+2022-04-20 22:05:37.380  INFO 18376 --- [ool-1-thread-89] tourGuide.service.TourGuideService       : Research the location of internalUser53
+2022-04-20 22:05:37.381  INFO 18376 --- [ool-1-thread-90] tourGuide.service.TourGuideService       : Research the location of internalUser50
+2022-04-20 22:05:37.381  INFO 18376 --- [ool-1-thread-91] tourGuide.service.TourGuideService       : Research the location of internalUser67
+2022-04-20 22:05:37.382  INFO 18376 --- [ool-1-thread-92] tourGuide.service.TourGuideService       : Research the location of internalUser66
+2022-04-20 22:05:37.383  INFO 18376 --- [ool-1-thread-93] tourGuide.service.TourGuideService       : Research the location of internalUser69
+2022-04-20 22:05:37.385  INFO 18376 --- [ool-1-thread-94] tourGuide.service.TourGuideService       : Research the location of internalUser68
+2022-04-20 22:05:37.386  INFO 18376 --- [ool-1-thread-95] tourGuide.service.TourGuideService       : Research the location of internalUser63
+2022-04-20 22:05:37.388  INFO 18376 --- [ool-1-thread-96] tourGuide.service.TourGuideService       : Research the location of internalUser62
+2022-04-20 22:05:37.389  INFO 18376 --- [ool-1-thread-97] tourGuide.service.TourGuideService       : Research the location of internalUser65
+2022-04-20 22:05:37.395  INFO 18376 --- [ool-1-thread-99] tourGuide.service.TourGuideService       : Research the location of internalUser61
+2022-04-20 22:05:37.395  INFO 18376 --- [ool-1-thread-98] tourGuide.service.TourGuideService       : Research the location of internalUser64
+2022-04-20 22:05:37.395  INFO 18376 --- [ol-1-thread-100] tourGuide.service.TourGuideService       : Research the location of internalUser60
+2022-04-20 22:05:38.029  INFO 18376 --- [    Test worker] tourGuide.service.RewardsService         : Multithreading calculateSeveralRewards begins
+highVolumeTrackLocation: Time Elapsed: 1 seconds.
+2022-04-20 22:05:38.656  INFO 18376 --- [    Test worker] tourGuide.service.TourGuideService       : TestMode enabled
+2022-04-20 22:05:38.657 DEBUG 18376 --- [    Test worker] tourGuide.service.TourGuideService       : Initializing users
+2022-04-20 22:05:38.688 DEBUG 18376 --- [    Test worker] tourGuide.service.TourGuideService       : Created 100 internal test users.
+2022-04-20 22:05:38.689 DEBUG 18376 --- [    Test worker] tourGuide.service.TourGuideService       : Finished initializing users
+2022-04-20 22:05:38.689  INFO 18376 --- [    Test worker] tourGuide.service.TourGuideService       : Get all users
+2022-04-20 22:05:38.717  INFO 18376 --- [    Test worker] tourGuide.service.RewardsService         : Multithreading calculateSeveralRewards begins
+highVolumeGetRewards: Time Elapsed: 1 seconds.
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

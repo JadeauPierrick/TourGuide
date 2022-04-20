@@ -14,6 +14,7 @@ import java.util.stream.IntStream;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import tourGuide.beans.Attraction;
@@ -35,18 +36,17 @@ import tourGuide.user.UserReward;
 public class TourGuideService {
 	private final Logger logger = LoggerFactory.getLogger(TourGuideService.class);
 
-	@Autowired
-	private TripPricerProxy tripPricerProxy;
-
 	private final GpsUtilProxy gpsUtilProxy;
 	private final RewardsService rewardsService;
+	private final TripPricerProxy tripPricerProxy;
 
 	public final Tracker tracker;
-	boolean testMode = true;
 
-	public TourGuideService(GpsUtilProxy gpsUtilProxy, RewardsService rewardsService) {
+	@Autowired
+	public TourGuideService(GpsUtilProxy gpsUtilProxy, RewardsService rewardsService, TripPricerProxy tripPricerProxy, @Value("${testmode}") boolean testMode, @Value("${tracking}") boolean tracking) {
 		this.gpsUtilProxy = gpsUtilProxy;
 		this.rewardsService = rewardsService;
+		this.tripPricerProxy = tripPricerProxy;
 
 		if(testMode) {
 			logger.info("TestMode enabled");
@@ -54,8 +54,13 @@ public class TourGuideService {
 			initializeInternalUsers();
 			logger.debug("Finished initializing users");
 		}
-		tracker = new Tracker(this);
-		addShutDownHook();
+		if (tracking) {
+			tracker = new Tracker(this);
+			addShutDownHook();
+		} else {
+			tracker = null;
+		}
+
 	}
 
 	/**
@@ -92,9 +97,11 @@ public class TourGuideService {
 		}
 	}
 
-	public UserPreferences getUserPreferences(String userName) {
+	public UserPreferencesDTO getUserPreferences(String userName) {
 		logger.info("Get preferences of " + userName);
-		return getUser(userName).getUserPreferences();
+		UserPreferencesDTO userPreferencesDTO = new UserPreferencesDTO();
+		getUser(userName).getUserPreferences().mapToUserPreferencesDTO(userPreferencesDTO);
+		return userPreferencesDTO;
 	}
 
 	/**
@@ -204,30 +211,11 @@ public class TourGuideService {
 		return allCurrentLocations;
 	}
 
-	public UserPreferences updateUserPreferences(String userName, UserPreferencesDTO newUserPreferences) {
-		UserPreferences currentPreferences = getUserPreferences(userName);
-		if (newUserPreferences.getAttractionProximity() >= 0) {
-			currentPreferences.setAttractionProximity(newUserPreferences.getAttractionProximity());
-		}
-		if (newUserPreferences.getLowerPricePoint() != null) {
-			currentPreferences.setLowerPricePoint(newUserPreferences.getLowerPricePoint());
-		}
-		if (newUserPreferences.getHighPricePoint() != null) {
-			currentPreferences.setHighPricePoint(newUserPreferences.getHighPricePoint());
-		}
-		if (newUserPreferences.getTripDuration() >= 0) {
-			currentPreferences.setTripDuration(newUserPreferences.getTripDuration());
-		}
-		if (newUserPreferences.getTicketQuantity() >= 0) {
-			currentPreferences.setTicketQuantity(newUserPreferences.getTicketQuantity());
-		}
-		if (newUserPreferences.getNumberOfAdults() >= 0) {
-			currentPreferences.setNumberOfAdults(newUserPreferences.getNumberOfAdults());
-		}
-		if (newUserPreferences.getNumberOfChildren() >= 0) {
-			currentPreferences.setNumberOfChildren(newUserPreferences.getNumberOfChildren());
-		}
-		return currentPreferences;
+	public UserPreferencesDTO updateUserPreferences(String userName, UserPreferencesDTO newUserPreferences) {
+		logger.info("Update preferences of " + userName);
+		getUser(userName).getUserPreferences().mapDTOToUserPreferences(newUserPreferences);
+
+		return getUserPreferences(userName);
 	}
 
 	private void addShutDownHook() {

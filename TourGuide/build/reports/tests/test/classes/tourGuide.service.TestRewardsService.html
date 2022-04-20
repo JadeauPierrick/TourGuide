@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="x-ua-compatible" content="IE=edge"/>
+<title>Test results - TestRewardsService</title>
+<link href="../css/base-style.css" rel="stylesheet" type="text/css"/>
+<link href="../css/style.css" rel="stylesheet" type="text/css"/>
+<script src="../js/report.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="content">
+<h1>TestRewardsService</h1>
+<div class="breadcrumbs">
+<a href="../index.html">all</a> &gt; 
+<a href="../packages/tourGuide.service.html">tourGuide.service</a> &gt; TestRewardsService</div>
+<div id="summary">
+<table>
+<tr>
+<td>
+<div class="summaryGroup">
+<table>
+<tr>
+<td>
+<div class="infoBox" id="tests">
+<div class="counter">3</div>
+<p>tests</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="failures">
+<div class="counter">0</div>
+<p>failures</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="ignored">
+<div class="counter">0</div>
+<p>ignored</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="duration">
+<div class="counter">13.594s</div>
+<p>duration</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</td>
+<td>
+<div class="infoBox success" id="successRate">
+<div class="percent">100%</div>
+<p>successful</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div id="tabs">
+<ul class="tabLinks">
+<li>
+<a href="#tab0">Tests</a>
+</li>
+<li>
+<a href="#tab1">Standard output</a>
+</li>
+</ul>
+<div id="tab0" class="tab">
+<h2>Tests</h2>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>Duration</th>
+<th>Result</th>
+</tr>
+</thead>
+<tr>
+<td class="success">isWithinAttractionProximity()</td>
+<td class="success">0.044s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">nearAllAttractions()</td>
+<td class="success">12.842s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">userGetRewards()</td>
+<td class="success">0.708s</td>
+<td class="success">passed</td>
+</tr>
+</table>
+</div>
+<div id="tab1" class="tab">
+<h2>Standard output</h2>
+<span class="code">
+<pre>2022-04-20 22:05:40.389  INFO 18376 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Neither @ContextConfiguration nor @ContextHierarchy found for test class [tourGuide.service.TestRewardsService], using SpringBootContextLoader
+2022-04-20 22:05:40.391  INFO 18376 --- [    Test worker] o.s.t.c.support.AbstractContextLoader    : Could not detect default resource locations for test class [tourGuide.service.TestRewardsService]: no resource found for suffixes {-context.xml, Context.groovy}.
+2022-04-20 22:05:40.391  INFO 18376 --- [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [tourGuide.service.TestRewardsService]: TestRewardsService does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2022-04-20 22:05:40.406  INFO 18376 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration tourGuide.Application for test class tourGuide.service.TestRewardsService
+2022-04-20 22:05:40.410  INFO 18376 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+2022-04-20 22:05:40.419  INFO 18376 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@4f24edf9, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@add929e, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@1526cb86, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@700cb93f, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@18afc9e2, org.springframework.test.context.support.DirtiesContextTestExecutionListener@7e00e10b, org.springframework.test.context.event.EventPublishingTestExecutionListener@5dd97fb6, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@4889f073, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@2e0fd059, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@57fe742a, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@414c95ac, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@46c1ef9e, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@169c7207]
+2022-04-20 22:05:41.187  INFO 18376 --- [    Test worker] tourGuide.service.TourGuideService       : TestMode enabled
+2022-04-20 22:05:41.188 DEBUG 18376 --- [    Test worker] tourGuide.service.TourGuideService       : Initializing users
+2022-04-20 22:05:41.188 DEBUG 18376 --- [    Test worker] tourGuide.service.TourGuideService       : Created 1 internal test users.
+2022-04-20 22:05:41.189 DEBUG 18376 --- [    Test worker] tourGuide.service.TourGuideService       : Finished initializing users
+2022-04-20 22:05:41.189  INFO 18376 --- [    Test worker] tourGuide.service.TourGuideService       : Get all users
+2022-04-20 22:05:53.997  INFO 18376 --- [    Test worker] tourGuide.service.TourGuideService       : Get all users
+</pre>
+</span>
+</div>
+</div>
+<div id="footer">
+<p>
+<div>
+<label class="hidden" id="label-for-line-wrapping-toggle" for="line-wrapping-toggle">Wrap lines
+<input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
+</label>
+</div>Generated by 
+<a href="http://www.gradle.org">Gradle 7.4.1</a> at 20 avr. 2022 22:06:08</p>
+</div>
+</div>
+</body>
+</html>

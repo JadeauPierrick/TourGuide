@@ -3,7 +3,9 @@ package tourGuide.dto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.javamoney.moneta.Money;
+
+import javax.money.CurrencyUnit;
+import javax.money.Monetary;
 
 @Data
 @NoArgsConstructor
@@ -12,9 +14,11 @@ public class UserPreferencesDTO {
 
     private int attractionProximity;
 
-    private Money lowerPricePoint;
+    private CurrencyUnit currency = Monetary.getCurrency("USD");
 
-    private Money highPricePoint;
+    private int lowerPricePoint;
+
+    private int highPricePoint;
 
     private int tripDuration = 1;
 

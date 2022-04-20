@@ -7,9 +7,9 @@ services:
     ports:
       - "8080:8080"
     environment:
-      GPSUTIL_API_URL: http://gpsutil-app:8081
-      REWARDCENTRAL_API_URL: http://rewardCentral-app:8082
-      TRIPPRICER_API_URL: http://tripPricer-app:8083
+      GPSUTIL_URL: http://gpsutil-app:8081
+      REWARDCENTRAL_URL: http://rewardCentral-app:8082
+      TRIPPRICER_URL: http://tripPricer-app:8083
     depends_on:
       - gpsUtil
       - rewardCentral

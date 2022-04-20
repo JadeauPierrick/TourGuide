@@ -6,6 +6,7 @@ import java.util.concurrent.*;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import tourGuide.beans.Attraction;
@@ -28,6 +29,7 @@ public class RewardsService {
 	private final GpsUtilProxy gpsUtilProxy;
 	private final RewardCentralProxy rewardCentralProxy;
 
+	@Autowired
 	public RewardsService(GpsUtilProxy gpsUtilProxy, RewardCentralProxy rewardCentralProxy) {
 		this.gpsUtilProxy = gpsUtilProxy;
 		this.rewardCentralProxy = rewardCentralProxy;
@@ -36,7 +38,11 @@ public class RewardsService {
 	public void setProximityBuffer(int proximityBuffer) {
 		this.proximityBuffer = proximityBuffer;
 	}
-	
+
+	public int getProximityBuffer() {
+		return proximityBuffer;
+	}
+
 	public void setDefaultProximityBuffer() {
 		proximityBuffer = defaultProximityBuffer;
 	}

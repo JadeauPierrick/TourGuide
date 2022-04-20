@@ -3,25 +3,29 @@
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.javamoney.moneta.Money;
 
-<span class="nc bnc" id="L8" title="All 32 branches missed.">@Data</span>
-<span class="nc" id="L9">@NoArgsConstructor</span>
-<span class="nc" id="L10">@AllArgsConstructor</span>
+import javax.money.CurrencyUnit;
+import javax.money.Monetary;
+
+<span class="pc bnc" id="L10" title="All 28 branches missed.">@Data</span>
+<span class="fc" id="L11">@NoArgsConstructor</span>
+<span class="nc" id="L12">@AllArgsConstructor</span>
 public class UserPreferencesDTO {
 
-<span class="nc" id="L13">    private int attractionProximity;</span>
+<span class="fc" id="L15">    private int attractionProximity;</span>
 
-<span class="nc" id="L15">    private Money lowerPricePoint;</span>
+<span class="pc" id="L17">    private CurrencyUnit currency = Monetary.getCurrency(&quot;USD&quot;);</span>
 
-<span class="nc" id="L17">    private Money highPricePoint;</span>
+<span class="fc" id="L19">    private int lowerPricePoint;</span>
 
-<span class="nc" id="L19">    private int tripDuration = 1;</span>
+<span class="fc" id="L21">    private int highPricePoint;</span>
 
-<span class="nc" id="L21">    private int ticketQuantity = 1;</span>
+<span class="pc" id="L23">    private int tripDuration = 1;</span>
 
-<span class="nc" id="L23">    private int numberOfAdults = 1;</span>
+<span class="pc" id="L25">    private int ticketQuantity = 1;</span>
 
-<span class="nc" id="L25">    private int numberOfChildren = 0;</span>
+<span class="pc" id="L27">    private int numberOfAdults = 1;</span>
+
+<span class="pc" id="L29">    private int numberOfChildren = 0;</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>
