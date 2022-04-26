@@ -14,7 +14,6 @@ import tourGuide.dto.UserPreferencesDTO;
 import tourGuide.service.RewardsService;
 import tourGuide.service.TourGuideService;
 import tourGuide.user.User;
-import tourGuide.user.UserPreferences;
 
 @RestController
 public class TourGuideController {
@@ -23,74 +22,56 @@ public class TourGuideController {
 
 	private final RewardsService rewardsService;
 
-<span class="fc" id="L26">    public TourGuideController(TourGuideService tourGuideService, RewardsService rewardsService) {</span>
-<span class="fc" id="L27">        this.tourGuideService = tourGuideService;</span>
-<span class="fc" id="L28">        this.rewardsService = rewardsService;</span>
-<span class="fc" id="L29">    }</span>
+<span class="fc" id="L25">    public TourGuideController(TourGuideService tourGuideService, RewardsService rewardsService) {</span>
+<span class="fc" id="L26">        this.tourGuideService = tourGuideService;</span>
+<span class="fc" id="L27">        this.rewardsService = rewardsService;</span>
+<span class="fc" id="L28">    }</span>
 
     @RequestMapping(&quot;/&quot;)
     public String index() {
-<span class="fc" id="L33">        return &quot;Greetings from TourGuide!&quot;;</span>
+<span class="fc" id="L32">        return &quot;Greetings from TourGuide!&quot;;</span>
     }
     
     @RequestMapping(&quot;/getLocation&quot;) 
     public String getLocation(@RequestParam String userName) {
-<span class="fc" id="L38">    	VisitedLocation visitedLocation = tourGuideService.getUserLocation(tourGuideService.getUser(userName));</span>
-<span class="fc" id="L39">		return JsonStream.serialize(visitedLocation.location);</span>
+<span class="fc" id="L37">    	VisitedLocation visitedLocation = tourGuideService.getUserLocation(tourGuideService.getUser(userName));</span>
+<span class="fc" id="L38">		return JsonStream.serialize(visitedLocation.location);</span>
     }
-    
-    //  TODO: Change this method to no longer return a List of Attractions.
- 	//  Instead: Get the closest five tourist attractions to the user - no matter how far away they are.
- 	//  Return a new JSON object that contains:
-    	// Name of Tourist attraction, 
-        // Tourist attractions lat/long, 
-        // The user's location lat/long, 
-        // The distance in miles between the user's location and each of the attractions.
-        // The reward points for visiting each Attraction.
-        //    Note: Attraction reward points can be gathered from RewardsCentral
+
     @RequestMapping(&quot;/getNearbyAttractions&quot;) 
     public String getNearbyAttractions(@RequestParam String userName) {
-<span class="fc" id="L53">        User user = tourGuideService.getUser(userName);</span>
-<span class="fc" id="L54">    	VisitedLocation visitedLocation = tourGuideService.getUserLocation(tourGuideService.getUser(userName));</span>
-<span class="fc" id="L55">    	return JsonStream.serialize(tourGuideService.getNearByAttractions(visitedLocation, user));</span>
+<span class="fc" id="L43">        User user = tourGuideService.getUser(userName);</span>
+<span class="fc" id="L44">    	VisitedLocation visitedLocation = tourGuideService.getUserLocation(tourGuideService.getUser(userName));</span>
+<span class="fc" id="L45">    	return JsonStream.serialize(tourGuideService.getNearByAttractions(visitedLocation, user));</span>
     }
     
     @RequestMapping(&quot;/getRewards&quot;) 
     public String getRewards(@RequestParam String userName) {
-<span class="fc" id="L60">    	return JsonStream.serialize(rewardsService.getUserRewards(tourGuideService.getUser(userName)));</span>
+<span class="fc" id="L50">    	return JsonStream.serialize(rewardsService.getUserRewards(tourGuideService.getUser(userName)));</span>
     }
     
     @RequestMapping(&quot;/getAllCurrentLocations&quot;)
     public String getAllCurrentLocations() {
-    	// TODO: Get a list of every user's most recent location as JSON
-    	//- Note: does not use gpsUtil to query for their current location, 
-    	//        but rather gathers the user's current location from their stored location history.
-    	//
-    	// Return object should be the just a JSON mapping of userId to Locations similar to:
-    	//     {
-    	//        &quot;019b04a9-067a-4c76-8817-ee75088c3822&quot;: {&quot;longitude&quot;:-48.188821,&quot;latitude&quot;:74.84371} 
-    	//        ...
-    	//     }
-<span class="fc" id="L74">        Map&lt;String, Location&gt; allCurrentLocations = tourGuideService.getAllCurrentLocations();</span>
-<span class="fc" id="L75">    	return JsonStream.serialize(allCurrentLocations);</span>
+<span class="fc" id="L55">        Map&lt;String, Location&gt; allCurrentLocations = tourGuideService.getAllCurrentLocations();</span>
+<span class="fc" id="L56">    	return JsonStream.serialize(allCurrentLocations);</span>
     }
     
     @RequestMapping(&quot;/getTripDeals&quot;)
     public String getTripDeals(@RequestParam String userName) {
-<span class="fc" id="L80">    	List&lt;Provider&gt; providers = tourGuideService.getTripDeals(tourGuideService.getUser(userName));</span>
-<span class="fc" id="L81">    	return JsonStream.serialize(providers);</span>
+<span class="fc" id="L61">    	List&lt;Provider&gt; providers = tourGuideService.getTripDeals(tourGuideService.getUser(userName));</span>
+<span class="fc" id="L62">    	return JsonStream.serialize(providers);</span>
     }
 
     @GetMapping(value = &quot;/getUserPreferences&quot;)
     public String getUserPreferences(@RequestParam String userName) {
-<span class="fc" id="L86">        UserPreferencesDTO userPreferencesDTO = tourGuideService.getUserPreferences(userName);</span>
-<span class="fc" id="L87">        return JsonStream.serialize(userPreferencesDTO);</span>
+<span class="fc" id="L67">        UserPreferencesDTO userPreferencesDTO = tourGuideService.getUserPreferences(userName);</span>
+<span class="fc" id="L68">        return JsonStream.serialize(userPreferencesDTO);</span>
     }
 
     @PutMapping(&quot;/updateUserPreferences&quot;)
     public String updateUserPreferences(@RequestParam String userName, @RequestBody UserPreferencesDTO userPreferencesDTO) {
-<span class="fc" id="L92">        UserPreferencesDTO newUserPreferences = tourGuideService.updateUserPreferences(userName, userPreferencesDTO);</span>
-<span class="fc" id="L93">        return JsonStream.serialize(newUserPreferences);</span>
+<span class="fc" id="L73">        UserPreferencesDTO newUserPreferences = tourGuideService.updateUserPreferences(userName, userPreferencesDTO);</span>
+<span class="fc" id="L74">        return JsonStream.serialize(newUserPreferences);</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

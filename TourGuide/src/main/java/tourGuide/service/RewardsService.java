@@ -46,7 +46,13 @@ public class RewardsService {
 	public void setDefaultProximityBuffer() {
 		proximityBuffer = defaultProximityBuffer;
 	}
-	
+
+	/**
+	 *Calculate the reward based on his lasted visited location. If he's close to an attraction and he has not already
+	 *a reward for it, then he gets a reward
+	 *
+	 * @param user the user whose the reward we want to calculate
+	 */
 	public void calculateRewards(User user) {
 		List<VisitedLocation> userLocations = new CopyOnWriteArrayList<>(user.getVisitedLocations());
 		List<Attraction> attractions = gpsUtilProxy.getAttractions();
@@ -62,6 +68,11 @@ public class RewardsService {
 		}
 	}
 
+	/**
+	 * Calculate the reward of each user on the list
+	 *
+	 * @param userList
+	 */
 	public void calculateSeveralRewards(List<User> userList) {
 		logger.info("Multithreading calculateSeveralRewards begins");
 		ExecutorService executor = Executors.newFixedThreadPool(100);

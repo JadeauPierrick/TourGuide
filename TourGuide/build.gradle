@@ -41,6 +41,7 @@ dependencies {
     implementation 'org.junit.jupiter:junit-jupiter:5.8.2'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.2'
     testImplementation 'org.springframework.boot:spring-boot-starter-test:2.6.6'
+    testImplementation group: 'nl.jqno.equalsverifier', name: 'equalsverifier', version: '3.8.1'
 
     implementation 'org.springframework.cloud:spring-cloud-starter-openfeign:3.1.1'
 

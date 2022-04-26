@@ -41,7 +41,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">14.021s</div>
+<div class="counter">17.469s</div>
 <p>duration</p>
 </div>
 </td>
@@ -79,52 +79,52 @@
 </thead>
 <tr>
 <td class="success">addUser()</td>
-<td class="success">0.033s</td>
+<td class="success">0.021s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">getAllCurrentLocations()</td>
-<td class="success">0.197s</td>
+<td class="success">0.083s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">getAllUsers()</td>
-<td class="success">0.015s</td>
+<td class="success">0.006s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">getNearbyAttractions()</td>
-<td class="success">12.988s</td>
+<td class="success">15.951s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">getTripDeals()</td>
-<td class="success">0.138s</td>
+<td class="success">0.090s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">getUser()</td>
-<td class="success">0.045s</td>
+<td class="success">0.041s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">getUserLocation()</td>
-<td class="success">0.423s</td>
+<td class="success">1.160s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">getUserPreferences()</td>
-<td class="success">0.054s</td>
+<td class="success">0.016s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">trackUserLocation()</td>
-<td class="success">0.109s</td>
+<td class="success">0.088s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">updateUserPreferences()</td>
-<td class="success">0.019s</td>
+<td class="success">0.013s</td>
 <td class="success">passed</td>
 </tr>
 </table>
@@ -132,36 +132,36 @@
 <div id="tab1" class="tab">
 <h2>Standard output</h2>
 <span class="code">
-<pre>2022-04-20 22:05:54.049  INFO 18376 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Neither @ContextConfiguration nor @ContextHierarchy found for test class [tourGuide.service.TestTourGuideService], using SpringBootContextLoader
-2022-04-20 22:05:54.051  INFO 18376 --- [    Test worker] o.s.t.c.support.AbstractContextLoader    : Could not detect default resource locations for test class [tourGuide.service.TestTourGuideService]: no resource found for suffixes {-context.xml, Context.groovy}.
-2022-04-20 22:05:54.051  INFO 18376 --- [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [tourGuide.service.TestTourGuideService]: TestTourGuideService does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-2022-04-20 22:05:54.054  INFO 18376 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration tourGuide.Application for test class tourGuide.service.TestTourGuideService
-2022-04-20 22:05:54.063  INFO 18376 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
-2022-04-20 22:05:54.067  INFO 18376 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@5cc5ec4a, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@2499e4dd, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@5b8caf1b, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@d83969c, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@7e579cda, org.springframework.test.context.support.DirtiesContextTestExecutionListener@158330c1, org.springframework.test.context.event.EventPublishingTestExecutionListener@2b49a11d, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@3aeff59e, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@781c0f55, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@74953daf, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@12322b69, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@57346fb4, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@4fcaa4a0]
-2022-04-20 22:05:54.076  INFO 18376 --- [    Test worker] tourGuide.service.TourGuideService       : TestMode enabled
-2022-04-20 22:05:54.076 DEBUG 18376 --- [    Test worker] tourGuide.service.TourGuideService       : Initializing users
-2022-04-20 22:05:54.077 DEBUG 18376 --- [    Test worker] tourGuide.service.TourGuideService       : Created 1 internal test users.
-2022-04-20 22:05:54.077 DEBUG 18376 --- [    Test worker] tourGuide.service.TourGuideService       : Finished initializing users
-2022-04-20 22:05:54.077  INFO 18376 --- [    Test worker] tourGuide.service.TourGuideService       : Get all users
-2022-04-20 22:05:54.083  INFO 18376 --- [    Test worker] tourGuide.service.TourGuideService       : Get the last visited location of internalUser0
-2022-04-20 22:05:54.511  INFO 18376 --- [    Test worker] tourGuide.service.TourGuideService       : Get the user : internalUser0
-2022-04-20 22:05:54.566  INFO 18376 --- [    Test worker] tourGuide.service.TourGuideService       : Add user : Antoine
-2022-04-20 22:05:54.566  INFO 18376 --- [    Test worker] tourGuide.service.TourGuideService       : Get all users
-2022-04-20 22:05:54.594  INFO 18376 --- [    Test worker] tourGuide.service.TourGuideService       : Get all users
-2022-04-20 22:05:54.611  INFO 18376 --- [    Test worker] tourGuide.service.TourGuideService       : Research the location of internalUser0
-2022-04-20 22:05:54.716  INFO 18376 --- [    Test worker] tourGuide.service.TourGuideService       : Research the location of internalUser0
-2022-04-20 22:05:54.759  INFO 18376 --- [    Test worker] tourGuide.service.TourGuideService       : Get the 5 nearest attractions for internalUser0
-2022-04-20 22:06:07.707  INFO 18376 --- [    Test worker] tourGuide.service.TourGuideService       : Get trip deals of internalUser0
-2022-04-20 22:06:07.856  INFO 18376 --- [    Test worker] tourGuide.service.TourGuideService       : Get all users
-2022-04-20 22:06:07.857  INFO 18376 --- [    Test worker] tourGuide.service.TourGuideService       : Get the last visited location of Antoine
-2022-04-20 22:06:07.857  INFO 18376 --- [    Test worker] tourGuide.service.TourGuideService       : Research the location of Antoine
-2022-04-20 22:06:08.024  INFO 18376 --- [    Test worker] tourGuide.service.TourGuideService       : Get the last visited location of internalUser0
-2022-04-20 22:06:08.069  INFO 18376 --- [    Test worker] tourGuide.service.TourGuideService       : Get preferences of internalUser0
-2022-04-20 22:06:08.071  INFO 18376 --- [    Test worker] tourGuide.service.TourGuideService       : Get the user : internalUser0
-2022-04-20 22:06:08.114  INFO 18376 --- [    Test worker] tourGuide.service.TourGuideService       : Update preferences of internalUser0
-2022-04-20 22:06:08.115  INFO 18376 --- [    Test worker] tourGuide.service.TourGuideService       : Get the user : internalUser0
-2022-04-20 22:06:08.117  INFO 18376 --- [    Test worker] tourGuide.service.TourGuideService       : Get preferences of internalUser0
-2022-04-20 22:06:08.119  INFO 18376 --- [    Test worker] tourGuide.service.TourGuideService       : Get the user : internalUser0
+<pre>2022-04-26 11:36:23.684  INFO 99911 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Neither @ContextConfiguration nor @ContextHierarchy found for test class [tourGuide.service.TestTourGuideService], using SpringBootContextLoader
+2022-04-26 11:36:23.704  INFO 99911 --- [    Test worker] o.s.t.c.support.AbstractContextLoader    : Could not detect default resource locations for test class [tourGuide.service.TestTourGuideService]: no resource found for suffixes {-context.xml, Context.groovy}.
+2022-04-26 11:36:23.705  INFO 99911 --- [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [tourGuide.service.TestTourGuideService]: TestTourGuideService does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2022-04-26 11:36:23.718  INFO 99911 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration tourGuide.Application for test class tourGuide.service.TestTourGuideService
+2022-04-26 11:36:23.727  INFO 99911 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+2022-04-26 11:36:23.732  INFO 99911 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@521dd061, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@4b3c10a4, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@321a6778, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@2c8fe85, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@3eeab865, org.springframework.test.context.support.DirtiesContextTestExecutionListener@15f8262c, org.springframework.test.context.event.EventPublishingTestExecutionListener@7438a24c, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@31415698, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@5a83f945, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@e9e7d7f, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@3f858422, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@4cbf0dc, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@41c768d1]
+2022-04-26 11:36:23.756  INFO 99911 --- [    Test worker] tourGuide.service.TourGuideService       : TestMode enabled
+2022-04-26 11:36:23.756 DEBUG 99911 --- [    Test worker] tourGuide.service.TourGuideService       : Initializing users
+2022-04-26 11:36:23.760 DEBUG 99911 --- [    Test worker] tourGuide.service.TourGuideService       : Created 1 internal test users.
+2022-04-26 11:36:23.761 DEBUG 99911 --- [    Test worker] tourGuide.service.TourGuideService       : Finished initializing users
+2022-04-26 11:36:23.761  INFO 99911 --- [    Test worker] tourGuide.service.TourGuideService       : Get all users
+2022-04-26 11:36:23.772  INFO 99911 --- [    Test worker] tourGuide.service.TourGuideService       : Get the last visited location of internalUser0
+2022-04-26 11:36:24.938  INFO 99911 --- [    Test worker] tourGuide.service.TourGuideService       : Get the user : internalUser0
+2022-04-26 11:36:24.979  INFO 99911 --- [    Test worker] tourGuide.service.TourGuideService       : Add user : Antoine
+2022-04-26 11:36:24.979  INFO 99911 --- [    Test worker] tourGuide.service.TourGuideService       : Get all users
+2022-04-26 11:36:24.996  INFO 99911 --- [    Test worker] tourGuide.service.TourGuideService       : Get all users
+2022-04-26 11:36:25.003  INFO 99911 --- [    Test worker] tourGuide.service.TourGuideService       : Research the location of internalUser0
+2022-04-26 11:36:25.094  INFO 99911 --- [    Test worker] tourGuide.service.TourGuideService       : Research the location of internalUser0
+2022-04-26 11:36:25.152  INFO 99911 --- [    Test worker] tourGuide.service.TourGuideService       : Get the 5 nearest attractions for internalUser0
+2022-04-26 11:36:41.044  INFO 99911 --- [    Test worker] tourGuide.service.TourGuideService       : Get trip deals of internalUser0
+2022-04-26 11:36:41.134  INFO 99911 --- [    Test worker] tourGuide.service.TourGuideService       : Get all users
+2022-04-26 11:36:41.135  INFO 99911 --- [    Test worker] tourGuide.service.TourGuideService       : Get the last visited location of Antoine
+2022-04-26 11:36:41.135  INFO 99911 --- [    Test worker] tourGuide.service.TourGuideService       : Research the location of Antoine
+2022-04-26 11:36:41.210  INFO 99911 --- [    Test worker] tourGuide.service.TourGuideService       : Get the last visited location of internalUser0
+2022-04-26 11:36:41.221  INFO 99911 --- [    Test worker] tourGuide.service.TourGuideService       : Get preferences of internalUser0
+2022-04-26 11:36:41.222  INFO 99911 --- [    Test worker] tourGuide.service.TourGuideService       : Get the user : internalUser0
+2022-04-26 11:36:41.238  INFO 99911 --- [    Test worker] tourGuide.service.TourGuideService       : Update preferences of internalUser0
+2022-04-26 11:36:41.238  INFO 99911 --- [    Test worker] tourGuide.service.TourGuideService       : Get the user : internalUser0
+2022-04-26 11:36:41.239  INFO 99911 --- [    Test worker] tourGuide.service.TourGuideService       : Get preferences of internalUser0
+2022-04-26 11:36:41.240  INFO 99911 --- [    Test worker] tourGuide.service.TourGuideService       : Get the user : internalUser0
 </pre>
 </span>
 </div>
@@ -173,7 +173,7 @@
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="http://www.gradle.org">Gradle 7.4.1</a> at 20 avr. 2022 22:06:08</p>
+<a href="http://www.gradle.org">Gradle 7.4.1</a> at 26 avr. 2022 11:36:43</p>
 </div>
 </div>
 </body>

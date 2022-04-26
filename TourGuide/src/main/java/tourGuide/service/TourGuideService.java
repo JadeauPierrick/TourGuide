@@ -29,7 +29,6 @@ import tourGuide.proxies.GpsUtilProxy;
 import tourGuide.proxies.TripPricerProxy;
 import tourGuide.tracker.Tracker;
 import tourGuide.user.User;
-import tourGuide.user.UserPreferences;
 import tourGuide.user.UserReward;
 
 @Service
@@ -90,11 +89,12 @@ public class TourGuideService {
 		return internalUserMap.values().stream().collect(Collectors.toList());
 	}
 	
-	public void addUser(User user) {
+	public User addUser(User user) {
 		logger.info("Add user : " + user.getUserName());
 		if(!internalUserMap.containsKey(user.getUserName())) {
 			internalUserMap.put(user.getUserName(), user);
 		}
+		return user;
 	}
 
 	public UserPreferencesDTO getUserPreferences(String userName) {
