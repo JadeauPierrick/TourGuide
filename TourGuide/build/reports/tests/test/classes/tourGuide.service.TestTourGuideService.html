@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="x-ua-compatible" content="IE=edge"/>
+<title>Test results - TestTourGuideService</title>
+<link href="../css/base-style.css" rel="stylesheet" type="text/css"/>
+<link href="../css/style.css" rel="stylesheet" type="text/css"/>
+<script src="../js/report.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="content">
+<h1>TestTourGuideService</h1>
+<div class="breadcrumbs">
+<a href="../index.html">all</a> &gt; 
+<a href="../packages/tourGuide.service.html">tourGuide.service</a> &gt; TestTourGuideService</div>
+<div id="summary">
+<table>
+<tr>
+<td>
+<div class="summaryGroup">
+<table>
+<tr>
+<td>
+<div class="infoBox" id="tests">
+<div class="counter">10</div>
+<p>tests</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="failures">
+<div class="counter">0</div>
+<p>failures</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="ignored">
+<div class="counter">0</div>
+<p>ignored</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="duration">
+<div class="counter">17.469s</div>
+<p>duration</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</td>
+<td>
+<div class="infoBox success" id="successRate">
+<div class="percent">100%</div>
+<p>successful</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div id="tabs">
+<ul class="tabLinks">
+<li>
+<a href="#tab0">Tests</a>
+</li>
+<li>
+<a href="#tab1">Standard output</a>
+</li>
+</ul>
+<div id="tab0" class="tab">
+<h2>Tests</h2>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>Duration</th>
+<th>Result</th>
+</tr>
+</thead>
+<tr>
+<td class="success">addUser()</td>
+<td class="success">0.021s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">getAllCurrentLocations()</td>
+<td class="success">0.083s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">getAllUsers()</td>
+<td class="success">0.006s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">getNearbyAttractions()</td>
+<td class="success">15.951s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">getTripDeals()</td>
+<td class="success">0.090s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">getUser()</td>
+<td class="success">0.041s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">getUserLocation()</td>
+<td class="success">1.160s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">getUserPreferences()</td>
+<td class="success">0.016s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">trackUserLocation()</td>
+<td class="success">0.088s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">updateUserPreferences()</td>
+<td class="success">0.013s</td>
+<td class="success">passed</td>
+</tr>
+</table>
+</div>
+<div id="tab1" class="tab">
+<h2>Standard output</h2>
+<span class="code">
+<pre>2022-04-26 11:36:23.684  INFO 99911 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Neither @ContextConfiguration nor @ContextHierarchy found for test class [tourGuide.service.TestTourGuideService], using SpringBootContextLoader
+2022-04-26 11:36:23.704  INFO 99911 --- [    Test worker] o.s.t.c.support.AbstractContextLoader    : Could not detect default resource locations for test class [tourGuide.service.TestTourGuideService]: no resource found for suffixes {-context.xml, Context.groovy}.
+2022-04-26 11:36:23.705  INFO 99911 --- [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [tourGuide.service.TestTourGuideService]: TestTourGuideService does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2022-04-26 11:36:23.718  INFO 99911 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration tourGuide.Application for test class tourGuide.service.TestTourGuideService
+2022-04-26 11:36:23.727  INFO 99911 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+2022-04-26 11:36:23.732  INFO 99911 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@521dd061, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@4b3c10a4, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@321a6778, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@2c8fe85, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@3eeab865, org.springframework.test.context.support.DirtiesContextTestExecutionListener@15f8262c, org.springframework.test.context.event.EventPublishingTestExecutionListener@7438a24c, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@31415698, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@5a83f945, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@e9e7d7f, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@3f858422, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@4cbf0dc, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@41c768d1]
+2022-04-26 11:36:23.756  INFO 99911 --- [    Test worker] tourGuide.service.TourGuideService       : TestMode enabled
+2022-04-26 11:36:23.756 DEBUG 99911 --- [    Test worker] tourGuide.service.TourGuideService       : Initializing users
+2022-04-26 11:36:23.760 DEBUG 99911 --- [    Test worker] tourGuide.service.TourGuideService       : Created 1 internal test users.
+2022-04-26 11:36:23.761 DEBUG 99911 --- [    Test worker] tourGuide.service.TourGuideService       : Finished initializing users
+2022-04-26 11:36:23.761  INFO 99911 --- [    Test worker] tourGuide.service.TourGuideService       : Get all users
+2022-04-26 11:36:23.772  INFO 99911 --- [    Test worker] tourGuide.service.TourGuideService       : Get the last visited location of internalUser0
+2022-04-26 11:36:24.938  INFO 99911 --- [    Test worker] tourGuide.service.TourGuideService       : Get the user : internalUser0
+2022-04-26 11:36:24.979  INFO 99911 --- [    Test worker] tourGuide.service.TourGuideService       : Add user : Antoine
+2022-04-26 11:36:24.979  INFO 99911 --- [    Test worker] tourGuide.service.TourGuideService       : Get all users
+2022-04-26 11:36:24.996  INFO 99911 --- [    Test worker] tourGuide.service.TourGuideService       : Get all users
+2022-04-26 11:36:25.003  INFO 99911 --- [    Test worker] tourGuide.service.TourGuideService       : Research the location of internalUser0
+2022-04-26 11:36:25.094  INFO 99911 --- [    Test worker] tourGuide.service.TourGuideService       : Research the location of internalUser0
+2022-04-26 11:36:25.152  INFO 99911 --- [    Test worker] tourGuide.service.TourGuideService       : Get the 5 nearest attractions for internalUser0
+2022-04-26 11:36:41.044  INFO 99911 --- [    Test worker] tourGuide.service.TourGuideService       : Get trip deals of internalUser0
+2022-04-26 11:36:41.134  INFO 99911 --- [    Test worker] tourGuide.service.TourGuideService       : Get all users
+2022-04-26 11:36:41.135  INFO 99911 --- [    Test worker] tourGuide.service.TourGuideService       : Get the last visited location of Antoine
+2022-04-26 11:36:41.135  INFO 99911 --- [    Test worker] tourGuide.service.TourGuideService       : Research the location of Antoine
+2022-04-26 11:36:41.210  INFO 99911 --- [    Test worker] tourGuide.service.TourGuideService       : Get the last visited location of internalUser0
+2022-04-26 11:36:41.221  INFO 99911 --- [    Test worker] tourGuide.service.TourGuideService       : Get preferences of internalUser0
+2022-04-26 11:36:41.222  INFO 99911 --- [    Test worker] tourGuide.service.TourGuideService       : Get the user : internalUser0
+2022-04-26 11:36:41.238  INFO 99911 --- [    Test worker] tourGuide.service.TourGuideService       : Update preferences of internalUser0
+2022-04-26 11:36:41.238  INFO 99911 --- [    Test worker] tourGuide.service.TourGuideService       : Get the user : internalUser0
+2022-04-26 11:36:41.239  INFO 99911 --- [    Test worker] tourGuide.service.TourGuideService       : Get preferences of internalUser0
+2022-04-26 11:36:41.240  INFO 99911 --- [    Test worker] tourGuide.service.TourGuideService       : Get the user : internalUser0
+</pre>
+</span>
+</div>
+</div>
+<div id="footer">
+<p>
+<div>
+<label class="hidden" id="label-for-line-wrapping-toggle" for="line-wrapping-toggle">Wrap lines
+<input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
+</label>
+</div>Generated by 
+<a href="http://www.gradle.org">Gradle 7.4.1</a> at 26 avr. 2022 11:36:43</p>
+</div>
+</div>
+</body>
+</html>

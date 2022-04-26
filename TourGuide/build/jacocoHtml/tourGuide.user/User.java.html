@@ -5,8 +5,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
-import gpsUtil.location.VisitedLocation;
-import tripPricer.Provider;
+import tourGuide.beans.Provider;
+import tourGuide.beans.VisitedLocation;
 
 public class User {
 	private final UUID userId;
@@ -14,7 +14,7 @@ public class User {
 	private String phoneNumber;
 	private String emailAddress;
 	private Date latestLocationTimestamp;
-<span class="fc" id="L17">	private List&lt;VisitedLocation&gt; visitedLocations = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L17">	private final List&lt;VisitedLocation&gt; visitedLocations = new ArrayList&lt;&gt;();</span>
 <span class="fc" id="L18">	private List&lt;UserReward&gt; userRewards = new ArrayList&lt;&gt;();</span>
 <span class="fc" id="L19">	private UserPreferences userPreferences = new UserPreferences();</span>
 <span class="fc" id="L20">	private List&lt;Provider&gt; tripDeals = new ArrayList&lt;&gt;();</span>
@@ -30,7 +30,7 @@ public class User {
 	}
 	
 	public String getUserName() {
-<span class="nc" id="L33">		return userName;</span>
+<span class="fc" id="L33">		return userName;</span>
 	}
 	
 	public void setPhoneNumber(String phoneNumber) {
@@ -70,7 +70,7 @@ public class User {
 <span class="fc" id="L70">	}</span>
 	
 	public void addUserReward(UserReward userReward) {
-<span class="pc bpc" id="L73" title="3 of 4 branches missed.">		if(userRewards.stream().filter(r -&gt; !r.attraction.attractionName.equals(userReward.attraction)).count() == 0) {</span>
+<span class="pc bpc" id="L73" title="1 of 2 branches missed.">		if(userRewards.stream().noneMatch(r -&gt; r.attraction.attractionName.equals(userReward.attraction.getAttractionName()))) {</span>
 <span class="fc" id="L74">			userRewards.add(userReward);</span>
 		}
 <span class="fc" id="L76">	}</span>
@@ -84,20 +84,20 @@ public class User {
 <span class="fc" id="L84">	}</span>
 
 	public UserPreferences getUserPreferences() {
-<span class="nc" id="L87">		return userPreferences;</span>
+<span class="fc" id="L87">		return userPreferences;</span>
 	}
 	
 	public void setUserPreferences(UserPreferences userPreferences) {
-<span class="nc" id="L91">		this.userPreferences = userPreferences;</span>
-<span class="nc" id="L92">	}</span>
+<span class="fc" id="L91">		this.userPreferences = userPreferences;</span>
+<span class="fc" id="L92">	}</span>
 
 	public VisitedLocation getLastVisitedLocation() {
-<span class="nc" id="L95">		return visitedLocations.get(visitedLocations.size() - 1);</span>
+<span class="fc" id="L95">		return visitedLocations.get(visitedLocations.size() - 1);</span>
 	}
 	
 	public void setTripDeals(List&lt;Provider&gt; tripDeals) {
-<span class="nc" id="L99">		this.tripDeals = tripDeals;</span>
-<span class="nc" id="L100">	}</span>
+<span class="fc" id="L99">		this.tripDeals = tripDeals;</span>
+<span class="fc" id="L100">	}</span>
 	
 	public List&lt;Provider&gt; getTripDeals() {
 <span class="nc" id="L103">		return tripDeals;</span>

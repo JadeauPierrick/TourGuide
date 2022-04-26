@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="x-ua-compatible" content="IE=edge"/>
+<title>Test results - TestPerformance</title>
+<link href="../css/base-style.css" rel="stylesheet" type="text/css"/>
+<link href="../css/style.css" rel="stylesheet" type="text/css"/>
+<script src="../js/report.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="content">
+<h1>TestPerformance</h1>
+<div class="breadcrumbs">
+<a href="../index.html">all</a> &gt; 
+<a href="../packages/tourGuide.performance.html">tourGuide.performance</a> &gt; TestPerformance</div>
+<div id="summary">
+<table>
+<tr>
+<td>
+<div class="summaryGroup">
+<table>
+<tr>
+<td>
+<div class="infoBox" id="tests">
+<div class="counter">2</div>
+<p>tests</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="failures">
+<div class="counter">0</div>
+<p>failures</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="ignored">
+<div class="counter">0</div>
+<p>ignored</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="duration">
+<div class="counter">4.001s</div>
+<p>duration</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</td>
+<td>
+<div class="infoBox success" id="successRate">
+<div class="percent">100%</div>
+<p>successful</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div id="tabs">
+<ul class="tabLinks">
+<li>
+<a href="#tab0">Tests</a>
+</li>
+<li>
+<a href="#tab1">Standard output</a>
+</li>
+</ul>
+<div id="tab0" class="tab">
+<h2>Tests</h2>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>Duration</th>
+<th>Result</th>
+</tr>
+</thead>
+<tr>
+<td class="success">highVolumeGetRewards()</td>
+<td class="success">2.028s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">highVolumeTrackLocation()</td>
+<td class="success">1.973s</td>
+<td class="success">passed</td>
+</tr>
+</table>
+</div>
+<div id="tab1" class="tab">
+<h2>Standard output</h2>
+<span class="code">
+<pre>2022-04-26 11:36:03.116  INFO 99911 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Neither @ContextConfiguration nor @ContextHierarchy found for test class [tourGuide.performance.TestPerformance], using SpringBootContextLoader
+2022-04-26 11:36:03.118  INFO 99911 --- [    Test worker] o.s.t.c.support.AbstractContextLoader    : Could not detect default resource locations for test class [tourGuide.performance.TestPerformance]: no resource found for suffixes {-context.xml, Context.groovy}.
+2022-04-26 11:36:03.120  INFO 99911 --- [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [tourGuide.performance.TestPerformance]: TestPerformance does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2022-04-26 11:36:03.140  INFO 99911 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration tourGuide.Application for test class tourGuide.performance.TestPerformance
+2022-04-26 11:36:03.144  INFO 99911 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+2022-04-26 11:36:03.147  INFO 99911 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@4791daa0, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@44ef42f4, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@159d4cda, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@13a8de0b, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@5aa54204, org.springframework.test.context.support.DirtiesContextTestExecutionListener@64635346, org.springframework.test.context.event.EventPublishingTestExecutionListener@1be7388c, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@4eeae57d, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@3e2f3bc6, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@40a8a626, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@62a9d5e7, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@7b7115c2, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@3cc7e061]
+2022-04-26 11:36:03.161  INFO 99911 --- [    Test worker] tourGuide.service.TourGuideService       : TestMode enabled
+2022-04-26 11:36:03.162 DEBUG 99911 --- [    Test worker] tourGuide.service.TourGuideService       : Initializing users
+2022-04-26 11:36:03.189 DEBUG 99911 --- [    Test worker] tourGuide.service.TourGuideService       : Created 100 internal test users.
+2022-04-26 11:36:03.189 DEBUG 99911 --- [    Test worker] tourGuide.service.TourGuideService       : Finished initializing users
+2022-04-26 11:36:03.189  INFO 99911 --- [    Test worker] tourGuide.service.TourGuideService       : Get all users
+2022-04-26 11:36:03.204  INFO 99911 --- [    Test worker] tourGuide.service.TourGuideService       : Multithreading to get all locations
+2022-04-26 11:36:03.206  INFO 99911 --- [pool-1-thread-1] tourGuide.service.TourGuideService       : Research the location of internalUser78
+2022-04-26 11:36:03.209  INFO 99911 --- [pool-1-thread-5] tourGuide.service.TourGuideService       : Research the location of internalUser73
+2022-04-26 11:36:03.208  INFO 99911 --- [pool-1-thread-3] tourGuide.service.TourGuideService       : Research the location of internalUser79
+2022-04-26 11:36:03.211  INFO 99911 --- [pool-1-thread-7] tourGuide.service.TourGuideService       : Research the location of internalUser75
+2022-04-26 11:36:03.208  INFO 99911 --- [pool-1-thread-2] tourGuide.service.TourGuideService       : Research the location of internalUser77
+2022-04-26 11:36:03.214  INFO 99911 --- [pool-1-thread-9] tourGuide.service.TourGuideService       : Research the location of internalUser72
+2022-04-26 11:36:03.216  INFO 99911 --- [ool-1-thread-10] tourGuide.service.TourGuideService       : Research the location of internalUser71
+2022-04-26 11:36:03.217  INFO 99911 --- [ool-1-thread-11] tourGuide.service.TourGuideService       : Research the location of internalUser90
+2022-04-26 11:36:03.219  INFO 99911 --- [ool-1-thread-12] tourGuide.service.TourGuideService       : Research the location of internalUser89
+2022-04-26 11:36:03.220  INFO 99911 --- [ool-1-thread-13] tourGuide.service.TourGuideService       : Research the location of internalUser88
+2022-04-26 11:36:03.221  INFO 99911 --- [ool-1-thread-15] tourGuide.service.TourGuideService       : Research the location of internalUser84
+2022-04-26 11:36:03.209  INFO 99911 --- [pool-1-thread-4] tourGuide.service.TourGuideService       : Research the location of internalUser74
+2022-04-26 11:36:03.225  INFO 99911 --- [ool-1-thread-20] tourGuide.service.TourGuideService       : Research the location of internalUser83
+2022-04-26 11:36:03.226  INFO 99911 --- [ool-1-thread-21] tourGuide.service.TourGuideService       : Research the location of internalUser82
+2022-04-26 11:36:03.226  INFO 99911 --- [ool-1-thread-22] tourGuide.service.TourGuideService       : Research the location of internalUser9
+2022-04-26 11:36:03.229  INFO 99911 --- [ool-1-thread-23] tourGuide.service.TourGuideService       : Research the location of internalUser8
+2022-04-26 11:36:03.232  INFO 99911 --- [ool-1-thread-24] tourGuide.service.TourGuideService       : Research the location of internalUser19
+2022-04-26 11:36:03.233  INFO 99911 --- [ool-1-thread-25] tourGuide.service.TourGuideService       : Research the location of internalUser16
+2022-04-26 11:36:03.236  INFO 99911 --- [ool-1-thread-26] tourGuide.service.TourGuideService       : Research the location of internalUser15
+2022-04-26 11:36:03.242  INFO 99911 --- [ool-1-thread-27] tourGuide.service.TourGuideService       : Research the location of internalUser18
+2022-04-26 11:36:03.246  INFO 99911 --- [ool-1-thread-28] tourGuide.service.TourGuideService       : Research the location of internalUser17
+2022-04-26 11:36:03.247  INFO 99911 --- [ool-1-thread-29] tourGuide.service.TourGuideService       : Research the location of internalUser12
+2022-04-26 11:36:03.247  INFO 99911 --- [ool-1-thread-30] tourGuide.service.TourGuideService       : Research the location of internalUser11
+2022-04-26 11:36:03.248  INFO 99911 --- [ool-1-thread-31] tourGuide.service.TourGuideService       : Research the location of internalUser99
+2022-04-26 11:36:03.250  INFO 99911 --- [ool-1-thread-32] tourGuide.service.TourGuideService       : Research the location of internalUser14
+2022-04-26 11:36:03.251  INFO 99911 --- [ool-1-thread-33] tourGuide.service.TourGuideService       : Research the location of internalUser13
+2022-04-26 11:36:03.253  INFO 99911 --- [ool-1-thread-35] tourGuide.service.TourGuideService       : Research the location of internalUser96
+2022-04-26 11:36:03.254  INFO 99911 --- [ool-1-thread-36] tourGuide.service.TourGuideService       : Research the location of internalUser2
+2022-04-26 11:36:03.256  INFO 99911 --- [ool-1-thread-37] tourGuide.service.TourGuideService       : Research the location of internalUser95
+2022-04-26 11:36:03.257  INFO 99911 --- [ool-1-thread-38] tourGuide.service.TourGuideService       : Research the location of internalUser1
+2022-04-26 11:36:03.259  INFO 99911 --- [ool-1-thread-39] tourGuide.service.TourGuideService       : Research the location of internalUser10
+2022-04-26 11:36:03.261  INFO 99911 --- [ool-1-thread-40] tourGuide.service.TourGuideService       : Research the location of internalUser98
+2022-04-26 11:36:03.262  INFO 99911 --- [ool-1-thread-41] tourGuide.service.TourGuideService       : Research the location of internalUser0
+2022-04-26 11:36:03.263  INFO 99911 --- [ool-1-thread-42] tourGuide.service.TourGuideService       : Research the location of internalUser97
+2022-04-26 11:36:03.266  INFO 99911 --- [ool-1-thread-43] tourGuide.service.TourGuideService       : Research the location of internalUser7
+2022-04-26 11:36:03.269  INFO 99911 --- [ool-1-thread-44] tourGuide.service.TourGuideService       : Research the location of internalUser92
+2022-04-26 11:36:03.271  INFO 99911 --- [ool-1-thread-45] tourGuide.service.TourGuideService       : Research the location of internalUser6
+2022-04-26 11:36:03.274  INFO 99911 --- [ool-1-thread-46] tourGuide.service.TourGuideService       : Research the location of internalUser91
+2022-04-26 11:36:03.276  INFO 99911 --- [ool-1-thread-47] tourGuide.service.TourGuideService       : Research the location of internalUser5
+2022-04-26 11:36:03.280  INFO 99911 --- [ool-1-thread-48] tourGuide.service.TourGuideService       : Research the location of internalUser94
+2022-04-26 11:36:03.282  INFO 99911 --- [ool-1-thread-50] tourGuide.service.TourGuideService       : Research the location of internalUser93
+2022-04-26 11:36:03.286  INFO 99911 --- [ool-1-thread-51] tourGuide.service.TourGuideService       : Research the location of internalUser27
+2022-04-26 11:36:03.287  INFO 99911 --- [ool-1-thread-52] tourGuide.service.TourGuideService       : Research the location of internalUser26
+2022-04-26 11:36:03.287  INFO 99911 --- [ool-1-thread-54] tourGuide.service.TourGuideService       : Research the location of internalUser28
+2022-04-26 11:36:03.290  INFO 99911 --- [ool-1-thread-55] tourGuide.service.TourGuideService       : Research the location of internalUser23
+2022-04-26 11:36:03.294  INFO 99911 --- [ool-1-thread-56] tourGuide.service.TourGuideService       : Research the location of internalUser22
+2022-04-26 11:36:03.295  INFO 99911 --- [ool-1-thread-57] tourGuide.service.TourGuideService       : Research the location of internalUser25
+2022-04-26 11:36:03.298  INFO 99911 --- [ool-1-thread-58] tourGuide.service.TourGuideService       : Research the location of internalUser24
+2022-04-26 11:36:03.301  INFO 99911 --- [ool-1-thread-59] tourGuide.service.TourGuideService       : Research the location of internalUser21
+2022-04-26 11:36:03.311  INFO 99911 --- [ool-1-thread-60] tourGuide.service.TourGuideService       : Research the location of internalUser20
+2022-04-26 11:36:03.311  INFO 99911 --- [ool-1-thread-19] tourGuide.service.TourGuideService       : Research the location of internalUser80
+2022-04-26 11:36:03.209  INFO 99911 --- [pool-1-thread-6] tourGuide.service.TourGuideService       : Research the location of internalUser76
+2022-04-26 11:36:03.213  INFO 99911 --- [pool-1-thread-8] tourGuide.service.TourGuideService       : Research the location of internalUser70
+2022-04-26 11:36:03.220  INFO 99911 --- [ool-1-thread-14] tourGuide.service.TourGuideService       : Research the location of internalUser85
+2022-04-26 11:36:03.222  INFO 99911 --- [ool-1-thread-16] tourGuide.service.TourGuideService       : Research the location of internalUser87
+2022-04-26 11:36:03.223  INFO 99911 --- [ool-1-thread-17] tourGuide.service.TourGuideService       : Research the location of internalUser86
+2022-04-26 11:36:03.223  INFO 99911 --- [ool-1-thread-18] tourGuide.service.TourGuideService       : Research the location of internalUser81
+2022-04-26 11:36:03.252  INFO 99911 --- [ool-1-thread-34] tourGuide.service.TourGuideService       : Research the location of internalUser3
+2022-04-26 11:36:03.280  INFO 99911 --- [ool-1-thread-49] tourGuide.service.TourGuideService       : Research the location of internalUser4
+2022-04-26 11:36:03.287  INFO 99911 --- [ool-1-thread-53] tourGuide.service.TourGuideService       : Research the location of internalUser29
+2022-04-26 11:36:03.417  INFO 99911 --- [ool-1-thread-61] tourGuide.service.TourGuideService       : Research the location of internalUser38
+2022-04-26 11:36:03.426  INFO 99911 --- [ool-1-thread-62] tourGuide.service.TourGuideService       : Research the location of internalUser37
+2022-04-26 11:36:03.428  INFO 99911 --- [ool-1-thread-63] tourGuide.service.TourGuideService       : Research the location of internalUser39
+2022-04-26 11:36:03.469  INFO 99911 --- [ool-1-thread-64] tourGuide.service.TourGuideService       : Research the location of internalUser34
+2022-04-26 11:36:03.535  INFO 99911 --- [ool-1-thread-65] tourGuide.service.TourGuideService       : Research the location of internalUser33
+2022-04-26 11:36:03.546  INFO 99911 --- [ool-1-thread-66] tourGuide.service.TourGuideService       : Research the location of internalUser36
+2022-04-26 11:36:03.551  INFO 99911 --- [ool-1-thread-67] tourGuide.service.TourGuideService       : Research the location of internalUser35
+2022-04-26 11:36:03.552  INFO 99911 --- [ool-1-thread-68] tourGuide.service.TourGuideService       : Research the location of internalUser30
+2022-04-26 11:36:03.558  INFO 99911 --- [ool-1-thread-69] tourGuide.service.TourGuideService       : Research the location of internalUser32
+2022-04-26 11:36:03.561  INFO 99911 --- [ool-1-thread-70] tourGuide.service.TourGuideService       : Research the location of internalUser31
+2022-04-26 11:36:03.561  INFO 99911 --- [ool-1-thread-71] tourGuide.service.TourGuideService       : Research the location of internalUser49
+2022-04-26 11:36:03.563  INFO 99911 --- [ool-1-thread-72] tourGuide.service.TourGuideService       : Research the location of internalUser48
+2022-04-26 11:36:03.568  INFO 99911 --- [ool-1-thread-80] tourGuide.service.TourGuideService       : Research the location of internalUser42
+2022-04-26 11:36:03.568  INFO 99911 --- [ool-1-thread-79] tourGuide.service.TourGuideService       : Research the location of internalUser43
+2022-04-26 11:36:03.566  INFO 99911 --- [ool-1-thread-77] tourGuide.service.TourGuideService       : Research the location of internalUser41
+2022-04-26 11:36:03.565  INFO 99911 --- [ool-1-thread-75] tourGuide.service.TourGuideService       : Research the location of internalUser47
+2022-04-26 11:36:03.567  INFO 99911 --- [ool-1-thread-78] tourGuide.service.TourGuideService       : Research the location of internalUser40
+2022-04-26 11:36:03.564  INFO 99911 --- [ool-1-thread-74] tourGuide.service.TourGuideService       : Research the location of internalUser44
+2022-04-26 11:36:03.566  INFO 99911 --- [ool-1-thread-76] tourGuide.service.TourGuideService       : Research the location of internalUser46
+2022-04-26 11:36:03.563  INFO 99911 --- [ool-1-thread-73] tourGuide.service.TourGuideService       : Research the location of internalUser45
+2022-04-26 11:36:03.581  INFO 99911 --- [ool-1-thread-81] tourGuide.service.TourGuideService       : Research the location of internalUser59
+2022-04-26 11:36:03.581  INFO 99911 --- [ool-1-thread-82] tourGuide.service.TourGuideService       : Research the location of internalUser56
+2022-04-26 11:36:03.585  INFO 99911 --- [ool-1-thread-83] tourGuide.service.TourGuideService       : Research the location of internalUser55
+2022-04-26 11:36:03.585  INFO 99911 --- [ool-1-thread-84] tourGuide.service.TourGuideService       : Research the location of internalUser58
+2022-04-26 11:36:03.590  INFO 99911 --- [ool-1-thread-85] tourGuide.service.TourGuideService       : Research the location of internalUser57
+2022-04-26 11:36:03.590  INFO 99911 --- [ool-1-thread-86] tourGuide.service.TourGuideService       : Research the location of internalUser52
+2022-04-26 11:36:03.594  INFO 99911 --- [ool-1-thread-87] tourGuide.service.TourGuideService       : Research the location of internalUser51
+2022-04-26 11:36:03.595  INFO 99911 --- [ool-1-thread-88] tourGuide.service.TourGuideService       : Research the location of internalUser54
+2022-04-26 11:36:03.598  INFO 99911 --- [ool-1-thread-89] tourGuide.service.TourGuideService       : Research the location of internalUser53
+2022-04-26 11:36:03.603  INFO 99911 --- [ool-1-thread-90] tourGuide.service.TourGuideService       : Research the location of internalUser50
+2022-04-26 11:36:03.610  INFO 99911 --- [ool-1-thread-91] tourGuide.service.TourGuideService       : Research the location of internalUser67
+2022-04-26 11:36:03.616  INFO 99911 --- [ool-1-thread-92] tourGuide.service.TourGuideService       : Research the location of internalUser66
+2022-04-26 11:36:03.616  INFO 99911 --- [ool-1-thread-93] tourGuide.service.TourGuideService       : Research the location of internalUser69
+2022-04-26 11:36:03.618  INFO 99911 --- [ool-1-thread-94] tourGuide.service.TourGuideService       : Research the location of internalUser68
+2022-04-26 11:36:03.619  INFO 99911 --- [ool-1-thread-95] tourGuide.service.TourGuideService       : Research the location of internalUser63
+2022-04-26 11:36:03.624  INFO 99911 --- [ool-1-thread-96] tourGuide.service.TourGuideService       : Research the location of internalUser62
+2022-04-26 11:36:03.626  INFO 99911 --- [ool-1-thread-97] tourGuide.service.TourGuideService       : Research the location of internalUser65
+2022-04-26 11:36:03.628  INFO 99911 --- [ool-1-thread-98] tourGuide.service.TourGuideService       : Research the location of internalUser64
+2022-04-26 11:36:03.629  INFO 99911 --- [ool-1-thread-99] tourGuide.service.TourGuideService       : Research the location of internalUser61
+2022-04-26 11:36:03.631  INFO 99911 --- [ol-1-thread-100] tourGuide.service.TourGuideService       : Research the location of internalUser60
+2022-04-26 11:36:04.538  INFO 99911 --- [    Test worker] tourGuide.service.RewardsService         : Multithreading calculateSeveralRewards begins
+highVolumeTrackLocation: Time Elapsed: 1 seconds.
+2022-04-26 11:36:05.201  INFO 99911 --- [    Test worker] tourGuide.service.TourGuideService       : TestMode enabled
+2022-04-26 11:36:05.203 DEBUG 99911 --- [    Test worker] tourGuide.service.TourGuideService       : Initializing users
+2022-04-26 11:36:05.252 DEBUG 99911 --- [    Test worker] tourGuide.service.TourGuideService       : Created 100 internal test users.
+2022-04-26 11:36:05.253 DEBUG 99911 --- [    Test worker] tourGuide.service.TourGuideService       : Finished initializing users
+2022-04-26 11:36:05.261  INFO 99911 --- [    Test worker] tourGuide.service.TourGuideService       : Get all users
+2022-04-26 11:36:05.316  INFO 99911 --- [    Test worker] tourGuide.service.RewardsService         : Multithreading calculateSeveralRewards begins
+highVolumeGetRewards: Time Elapsed: 1 seconds.
+</pre>
+</span>
+</div>
+</div>
+<div id="footer">
+<p>
+<div>
+<label class="hidden" id="label-for-line-wrapping-toggle" for="line-wrapping-toggle">Wrap lines
+<input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
+</label>
+</div>Generated by 
+<a href="http://www.gradle.org">Gradle 7.4.1</a> at 26 avr. 2022 11:36:43</p>
+</div>
+</div>
+</body>
+</html>

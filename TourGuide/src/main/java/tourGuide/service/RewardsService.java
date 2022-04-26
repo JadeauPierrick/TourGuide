@@ -6,13 +6,14 @@ import java.util.concurrent.*;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import gpsUtil.GpsUtil;
-import gpsUtil.location.Attraction;
-import gpsUtil.location.Location;
-import gpsUtil.location.VisitedLocation;
-import rewardCentral.RewardCentral;
+import tourGuide.beans.Attraction;
+import tourGuide.beans.Location;
+import tourGuide.beans.VisitedLocation;
+import tourGuide.proxies.GpsUtilProxy;
+import tourGuide.proxies.RewardCentralProxy;
 import tourGuide.user.User;
 import tourGuide.user.UserReward;
 
@@ -25,28 +26,40 @@ public class RewardsService {
     private int defaultProximityBuffer = 10;
 	private int proximityBuffer = defaultProximityBuffer;
 	private int attractionProximityRange = 200;
-	private final GpsUtil gpsUtil;
-	private final RewardCentral rewardsCentral;
-	
-	public RewardsService(GpsUtil gpsUtil, RewardCentral rewardCentral) {
-		this.gpsUtil = gpsUtil;
-		this.rewardsCentral = rewardCentral;
+	private final GpsUtilProxy gpsUtilProxy;
+	private final RewardCentralProxy rewardCentralProxy;
+
+	@Autowired
+	public RewardsService(GpsUtilProxy gpsUtilProxy, RewardCentralProxy rewardCentralProxy) {
+		this.gpsUtilProxy = gpsUtilProxy;
+		this.rewardCentralProxy = rewardCentralProxy;
 	}
-	
+
 	public void setProximityBuffer(int proximityBuffer) {
 		this.proximityBuffer = proximityBuffer;
 	}
-	
+
+	public int getProximityBuffer() {
+		return proximityBuffer;
+	}
+
 	public void setDefaultProximityBuffer() {
 		proximityBuffer = defaultProximityBuffer;
 	}
-	
+
+	/**
+	 *Calculate the reward based on his lasted visited location. If he's close to an attraction and he has not already
+	 *a reward for it, then he gets a reward
+	 *
+	 * @param user the user whose the reward we want to calculate
+	 */
 	public void calculateRewards(User user) {
+		logger.info("Calculate the reward of " + user.getUserName());
 		List<VisitedLocation> userLocations = new CopyOnWriteArrayList<>(user.getVisitedLocations());
-		List<Attraction> attractions = gpsUtil.getAttractions();
+		List<Attraction> attractions = gpsUtilProxy.getAttractions();
 		
-		for(VisitedLocation visitedLocation : userLocations) {
-			for(Attraction attraction : attractions) {
+		for(Attraction attraction : attractions) {
+			for(VisitedLocation visitedLocation : userLocations) {
 				if(user.getUserRewards().stream().noneMatch(r -> r.attraction.attractionName.equals(attraction.attractionName))) {
 					if(nearAttraction(visitedLocation, attraction)) {
 						user.addUserReward(new UserReward(visitedLocation, attraction, getRewardPoints(attraction, user)));
@@ -56,6 +69,11 @@ public class RewardsService {
 		}
 	}
 
+	/**
+	 * Calculate the reward of each user on the list
+	 *
+	 * @param userList the list of the users
+	 */
 	public void calculateSeveralRewards(List<User> userList) {
 		logger.info("Multithreading calculateSeveralRewards begins");
 		ExecutorService executor = Executors.newFixedThreadPool(100);
@@ -87,11 +105,11 @@ public class RewardsService {
 		return getDistance(attraction, visitedLocation.location) > proximityBuffer ? false : true;
 	}
 	
-	private int getRewardPoints(Attraction attraction, User user) {
-		return rewardsCentral.getAttractionRewardPoints(attraction.attractionId, user.getUserId());
+	public int getRewardPoints(Attraction attraction, User user) {
+		return rewardCentralProxy.getAttractionRewardPoints(attraction.attractionId, user.getUserId());
 	}
 	
-	public double getDistance(Location loc1, Location loc2) {
+	public double getDistance(Attraction loc1, Location loc2) {
         double lat1 = Math.toRadians(loc1.latitude);
         double lon1 = Math.toRadians(loc1.longitude);
         double lat2 = Math.toRadians(loc2.latitude);
@@ -105,4 +123,7 @@ public class RewardsService {
         return statuteMiles;
 	}
 
+	public List<UserReward> getUserRewards(User user) {
+		return user.getUserRewards();
+	}
 }

@@ -4,6 +4,7 @@ import javax.money.CurrencyUnit;
 import javax.money.Monetary;
 
 import org.javamoney.moneta.Money;
+import tourGuide.dto.UserPreferencesDTO;
 
 
 public class UserPreferences {
@@ -19,7 +20,15 @@ public class UserPreferences {
 	
 	public UserPreferences() {
 	}
-	
+
+	public CurrencyUnit getCurrency() {
+		return currency;
+	}
+
+	public void setCurrency(CurrencyUnit currency) {
+		this.currency = currency;
+	}
+
 	public void setAttractionProximity(int attractionProximity) {
 		this.attractionProximity = attractionProximity;
 	}
@@ -76,4 +85,41 @@ public class UserPreferences {
 		this.numberOfChildren = numberOfChildren;
 	}
 
+	public void mapToUserPreferencesDTO(UserPreferencesDTO userPreferencesDTO) {
+		userPreferencesDTO.setAttractionProximity(attractionProximity);
+		userPreferencesDTO.setCurrency(currency);
+		userPreferencesDTO.setLowerPricePoint(lowerPricePoint.getNumber().intValue());
+		userPreferencesDTO.setHighPricePoint(highPricePoint.getNumber().intValue());
+		userPreferencesDTO.setTripDuration(tripDuration);
+		userPreferencesDTO.setTicketQuantity(ticketQuantity);
+		userPreferencesDTO.setNumberOfAdults(numberOfAdults);
+		userPreferencesDTO.setNumberOfChildren(numberOfChildren);
+	}
+
+	public void mapDTOToUserPreferences(UserPreferencesDTO userPreferencesDTO) {
+		if (userPreferencesDTO.getAttractionProximity() >= 0) {
+			setAttractionProximity(userPreferencesDTO.getAttractionProximity());
+		}
+		if (userPreferencesDTO.getCurrency() != null) {
+			setCurrency(userPreferencesDTO.getCurrency());
+		}
+		if (userPreferencesDTO.getLowerPricePoint() >= 0) {
+			setLowerPricePoint(Money.of(userPreferencesDTO.getLowerPricePoint(), currency));
+		}
+		if (userPreferencesDTO.getHighPricePoint() >= 0) {
+			setHighPricePoint(Money.of(userPreferencesDTO.getHighPricePoint(), currency));
+		}
+		if (userPreferencesDTO.getTripDuration() >= 0) {
+			setTripDuration(userPreferencesDTO.getTripDuration());
+		}
+		if (userPreferencesDTO.getTicketQuantity() >= 0) {
+			setTicketQuantity(userPreferencesDTO.getTicketQuantity());
+		}
+		if (userPreferencesDTO.getNumberOfAdults() >= 0) {
+			setNumberOfAdults(userPreferencesDTO.getNumberOfAdults());
+		}
+		if (userPreferencesDTO.getNumberOfChildren() >= 0) {
+			setNumberOfChildren(userPreferencesDTO.getNumberOfChildren());
+		}
+	}
 }
